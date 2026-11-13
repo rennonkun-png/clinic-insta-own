@@ -1,1 +1,116 @@
-{"posted": []}
+{
+  "posted": [
+    {
+      "date": "2026-11-10",
+      "id": "webmarketing:hp-renewal-timing",
+      "category": "webmarketing",
+      "title": "HPリニューアル、本当に必要？3つの判断基準",
+      "format": "reel",
+      "hook": "question",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "manual": true
+    },
+    {
+      "date": "2026-11-11",
+      "id": "webmarketing:ai-search",
+      "category": "webmarketing",
+      "title": "ChatGPTで「近くの歯医者」を探す時代が来ています",
+      "format": "image",
+      "hook": "warning",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "manual": true
+    },
+    {
+      "date": "2026-11-12",
+      "id": "webmarketing:photo-matters",
+      "category": "webmarketing",
+      "title": "HPの写真を変えただけで予約が増えた理由",
+      "format": "carousel",
+      "hook": "story",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "manual": true
+    },
+    {
+      "date": "2026-11-13",
+      "id": "webmarketing:sns-automation",
+      "category": "webmarketing",
+      "title": "SNS運用が続かない医院の共通点",
+      "format": "reel",
+      "hook": "warning",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "manual": true
+    },
+    {
+      "date": "2026-11-16",
+      "id": "webmarketing:service-page-structure",
+      "category": "webmarketing",
+      "title": "診療案内ページ、「一覧」で終わらせない構成",
+      "format": "carousel",
+      "hook": "howto",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "manual": true
+    },
+    {
+      "date": "2026-11-17",
+      "id": "webmarketing:listing-ads-basics",
+      "category": "webmarketing",
+      "title": "リスティング広告、月5万円から始めるなら",
+      "format": "reel",
+      "hook": "howto",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "manual": true
+    },
+    {
+      "date": "2026-11-18",
+      "id": "webmarketing:insta-profile",
+      "category": "webmarketing",
+      "title": "Instagramプロフィール、5秒で伝わりますか？",
+      "format": "carousel",
+      "hook": "question",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "manual": true
+    }
+  ]
+}
