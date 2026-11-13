@@ -111,6 +111,24 @@
         "acquisition"
       ],
       "manual": true
+    },
+    {
+      "date": "2026-11-13",
+      "id": "webmarketing:insta-for-clinic",
+      "category": "webmarketing",
+      "title": "クリニックのInstagram、何を投稿すればいい？",
+      "format": "reel",
+      "hook": "question",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18456041254192918",
+      "permalink": "https://www.instagram.com/reel/Dfrg2PpB7tM/",
+      "followers_at_post": 100
     }
   ]
 }
