@@ -3,10 +3,6 @@
  "gap_sec": 60,
  "items": [
   {
-   "id": "t1115-4",
-   "format": "carousel"
-  },
-  {
    "id": "t1115-5",
    "format": "reel"
   },
