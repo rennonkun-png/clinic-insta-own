@@ -183,6 +183,24 @@
       "media_id": "18642555046028307",
       "permalink": "https://www.instagram.com/reel/DfvJLbcJ8Fi/",
       "followers_at_post": 100
+    },
+    {
+      "date": "2026-11-15",
+      "id": "generated:t1115-3",
+      "category": "webmarketing",
+      "title": "何も言わずに閉じられやすい、HPの5つの特徴",
+      "format": "carousel",
+      "hook": "warning",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18130769911639893",
+      "permalink": "https://www.instagram.com/p/DfvJ_4Sms6t/",
+      "followers_at_post": 100
     }
   ]
 }
