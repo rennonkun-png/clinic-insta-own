@@ -129,6 +129,24 @@
       "media_id": "18456041254192918",
       "permalink": "https://www.instagram.com/reel/Dfrg2PpB7tM/",
       "followers_at_post": 100
+    },
+    {
+      "date": "2026-11-15",
+      "id": "webmarketing:gbp-basics",
+      "category": "webmarketing",
+      "title": "Googleマップで探す人に、自院はどう見えていますか？",
+      "format": "reel",
+      "hook": "number",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18140573878725112",
+      "permalink": "https://www.instagram.com/reel/Dfuh6tBt2dm/",
+      "followers_at_post": 100
     }
   ]
 }
