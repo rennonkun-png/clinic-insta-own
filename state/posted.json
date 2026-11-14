@@ -237,6 +237,24 @@
       "media_id": "17995690341028001",
       "permalink": "https://www.instagram.com/p/DfvL-MZF6Lp/",
       "followers_at_post": 100
+    },
+    {
+      "date": "2026-11-15",
+      "id": "generated:t1115-7",
+      "category": "webmarketing",
+      "title": "広告を足す前に、見つかったあとの3か所を直す",
+      "format": "image",
+      "hook": "myth",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18132918007797294",
+      "permalink": "https://www.instagram.com/p/DfvMq-bGsDk/",
+      "followers_at_post": 100
     }
   ]
 }
