@@ -201,6 +201,24 @@
       "media_id": "18130769911639893",
       "permalink": "https://www.instagram.com/p/DfvJ_4Sms6t/",
       "followers_at_post": 100
+    },
+    {
+      "date": "2026-11-15",
+      "id": "generated:t1115-4",
+      "category": "webmarketing",
+      "title": "月に1回、Googleで自院名を検索して見るチェック表",
+      "format": "carousel",
+      "hook": "howto",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18145889692717165",
+      "permalink": "https://www.instagram.com/p/DfvKRXJFy4i/",
+      "followers_at_post": 100
     }
   ]
 }
