@@ -255,6 +255,24 @@
       "media_id": "18132918007797294",
       "permalink": "https://www.instagram.com/p/DfvMq-bGsDk/",
       "followers_at_post": 100
+    },
+    {
+      "date": "2026-11-15",
+      "id": "generated:t1115-5",
+      "category": "webmarketing",
+      "title": "開業1〜3年目の院長先生へ。最初に整える3つ",
+      "format": "reel",
+      "hook": "number",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18214257376364309",
+      "permalink": "https://www.instagram.com/reel/DfvNZkkB4Eo/",
+      "followers_at_post": 100
     }
   ]
 }
