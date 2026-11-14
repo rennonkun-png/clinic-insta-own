@@ -147,6 +147,24 @@
       "media_id": "18140573878725112",
       "permalink": "https://www.instagram.com/reel/Dfuh6tBt2dm/",
       "followers_at_post": 100
+    },
+    {
+      "date": "2026-11-15",
+      "id": "generated:t1115-1",
+      "category": "webmarketing",
+      "title": "「HPは業者に任せてるから」のあとに、よく起きること",
+      "format": "carousel",
+      "hook": "story",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18015726938967277",
+      "permalink": "https://www.instagram.com/p/DfvIsVLGh9M/",
+      "followers_at_post": 100
     }
   ]
 }
