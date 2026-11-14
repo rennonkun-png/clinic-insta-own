@@ -219,6 +219,24 @@
       "media_id": "18145889692717165",
       "permalink": "https://www.instagram.com/p/DfvKRXJFy4i/",
       "followers_at_post": 100
+    },
+    {
+      "date": "2026-11-15",
+      "id": "generated:t1115-6",
+      "category": "webmarketing",
+      "title": "PageSpeed Insights、点数と秒数を見る",
+      "format": "carousel",
+      "hook": "number",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "17995690341028001",
+      "permalink": "https://www.instagram.com/p/DfvL-MZF6Lp/",
+      "followers_at_post": 100
     }
   ]
 }
