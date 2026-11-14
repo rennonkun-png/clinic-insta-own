@@ -165,6 +165,24 @@
       "media_id": "18015726938967277",
       "permalink": "https://www.instagram.com/p/DfvIsVLGh9M/",
       "followers_at_post": 100
+    },
+    {
+      "date": "2026-11-15",
+      "id": "generated:t1115-2",
+      "category": "webmarketing",
+      "title": "口コミの返信、院長が書くか、スタッフが書くか",
+      "format": "reel",
+      "hook": "question",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18642555046028307",
+      "permalink": "https://www.instagram.com/reel/DfvJLbcJ8Fi/",
+      "followers_at_post": 100
     }
   ]
 }
