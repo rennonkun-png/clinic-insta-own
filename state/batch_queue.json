@@ -1,0 +1,34 @@
+{
+ "date": "2026-11-15",
+ "gap_sec": 60,
+ "items": [
+  {
+   "id": "t1115-1",
+   "format": "carousel"
+  },
+  {
+   "id": "t1115-2",
+   "format": "reel"
+  },
+  {
+   "id": "t1115-3",
+   "format": "carousel"
+  },
+  {
+   "id": "t1115-4",
+   "format": "carousel"
+  },
+  {
+   "id": "t1115-5",
+   "format": "reel"
+  },
+  {
+   "id": "t1115-6",
+   "format": "carousel"
+  },
+  {
+   "id": "t1115-7",
+   "format": "image"
+  }
+ ]
+}
