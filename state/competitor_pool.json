@@ -1,4 +1,59 @@
 {
  "note": "毎週のネタづくり（Claude）が新しい競合を探して足し、入れ替える。読めないものは自動で unreadable になる。",
- "accounts": []
+ "accounts": [
+  {
+   "username": "groovetokyo.inc",
+   "added": "2026-11-16",
+   "reason": "歯科医院の開業・運営支援。歯科スタッフ向け接遇セミナーの報告リールなど、歯科向けの支援系で反応率3.4%",
+   "status": "active"
+  },
+  {
+   "username": "shikahiroba_com",
+   "added": "2026-11-16",
+   "reason": "歯科開業情報サイト。「歯科医院開業のリアル」「完全無料」など開業を考える歯科医師向けの切り口",
+   "status": "active"
+  },
+  {
+   "username": "kenjiueda12",
+   "added": "2026-11-16",
+   "reason": "開業支援の担当者個人。週22投稿と投稿量が多く、開業インタビューのリールを出している（フォロワー3,693）",
+   "status": "active"
+  },
+  {
+   "username": "medical.assets",
+   "added": "2026-11-16",
+   "reason": "医療向け税理士法人。道案内・外回りの1日などのリールで中の人を見せる運用（反応率4.5%）",
+   "status": "active"
+  },
+  {
+   "username": "dental_alphazeal",
+   "added": "2026-11-16",
+   "reason": "歯科開業の内覧会。歯科医院への訪問・院長紹介の投稿で、開業系の別の切り口",
+   "status": "active"
+  },
+  {
+   "username": "gc_recruiting",
+   "added": "2026-11-16",
+   "reason": "クリニック採用の公式。「1日の流れ」「仕事がついている人」など職種紹介型のカルーセル",
+   "status": "active"
+  },
+  {
+   "username": "dio_recruit_info",
+   "added": "2026-11-16",
+   "reason": "クリニック新卒採用の公式。平均いいね24.5、反応率4.4%と採用系で反応が高い",
+   "status": "active"
+  },
+  {
+   "username": "reamer_medical",
+   "added": "2026-11-16",
+   "reason": "歯科開業支援／医療SNS支援の候補だったが、Instagramから読めなかった（Invalid user id）",
+   "status": "unreadable"
+  },
+  {
+   "username": "insta_clinic_sns",
+   "added": "2026-11-16",
+   "reason": "歯科開業支援／医療SNS支援の候補だったが、Instagramから読めなかった（Invalid user id）",
+   "status": "unreadable"
+  }
+ ]
 }
