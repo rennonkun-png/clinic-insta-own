@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-11-16T01:29:14.062658+00:00",
+  "clinic_name": "株式会社GENOVA",
+  "goals": [
+    "reach",
+    "reels",
+    "followers",
+    "acquisition"
+  ],
+  "analyzed_posts": 1,
+  "mean_score": 0.4,
+  "top": [
+    {
+      "date": "2026-11-13",
+      "title": "クリニックのInstagram、何を投稿すればいい？",
+      "category": "webmarketing",
+      "format": "reel",
+      "hook": "question",
+      "service": "web_consulting",
+      "score": 0.4,
+      "reach": 4,
+      "saved": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": 5,
+      "permalink": "https://www.instagram.com/reel/Dfrg2PpB7tM/"
+    }
+  ],
+  "bottom": [],
+  "weights": {},
+  "follower_history": [
+    {
+      "date": "2026-11-16",
+      "followers": 100,
+      "media": 15
+    }
+  ],
+  "tips": [],
+  "retired_count": 0
+}
