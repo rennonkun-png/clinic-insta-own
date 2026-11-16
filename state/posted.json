@@ -273,6 +273,24 @@
       "media_id": "18214257376364309",
       "permalink": "https://www.instagram.com/reel/DfvNZkkB4Eo/",
       "followers_at_post": 100
+    },
+    {
+      "date": "2026-11-16",
+      "id": "webmarketing:lp-for-clinic",
+      "category": "webmarketing",
+      "title": "広告で来た人が、HPをすぐ閉じる理由",
+      "format": "reel",
+      "hook": "story",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18097278530323841",
+      "permalink": "https://www.instagram.com/reel/DfzIWMdMOQn/",
+      "followers_at_post": 100
     }
   ]
 }
