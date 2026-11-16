@@ -181,6 +181,7 @@ def audience(api: Api, day: date) -> dict | None:
             for h, cnt in (v.get("value") or {}).items():
                 hh = (int(h) + 17) % 24  # Instagram は太平洋時間の時刻で返すので日本時間に直す（+17時間）
                 snap["online_hours"][dt.weekday()][hh] = cnt
+        log(f"オンラインの時間帯: 記録 {sum(sum(r) for r in snap['online_hours'])}（{len(d['data'][0].get('values', []))} 日分）")
     except Exception as e:  # noqa: BLE001
         log(f"オンラインの時間帯を取れませんでした: {e}")
     try:
@@ -237,9 +238,9 @@ def main() -> int:
     save(pd_path, pdj)
     log(f"{day} の記録: 投稿 {len(media)} 本")
 
-    # 3) フォロワーの属性（月曜、または記録がまだ無いとき）
+    # 3) フォロワーの属性とオンラインの時間帯（毎晩。問い合わせは数回だけ）
     aud = load(acc_dir / "audience.json", {"snapshots": []})
-    if day.weekday() == 0 or not aud["snapshots"]:
+    if True:
         snap = audience(api, day)
         aud["snapshots"] = [s for s in aud["snapshots"] if s["date"] != day.isoformat()] + [snap]
         save(acc_dir / "audience.json", aud)
