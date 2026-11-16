@@ -13,6 +13,7 @@ on:
 
 permissions:
   contents: read
+  actions: write
 
 concurrency:
   group: analytics-live
@@ -28,6 +29,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      # 時間の実験: 今が投稿の時刻（config の schedule.slots）なら、投稿のワークフローを動かす。
+      # この実行は Cloudflare から5分おきに時刻どおり呼ばれるので、ここで時刻を見る
+      - name: 実験の投稿の時刻なら、投稿を動かす
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          r=$(python scripts/slot_now.py)
+          echo "$r"
+          if [ "${r%% *}" = "yes" ]; then gh workflow run daily-post.yml --ref main -f slot=true -f format=reel; fi
+
       - run: pip install -q requests
 
       # 最新の数字は、分析リポジトリの live ブランチに1つだけ置く（履歴は残さない。サイトの作り直しも起きない）

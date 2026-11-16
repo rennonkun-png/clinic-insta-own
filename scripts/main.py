@@ -77,6 +77,17 @@ def main() -> int:
     # 時間の実験の枠（SLOT=1）のときは config の schedule.max_per_day 本まで
     today_n = sum(1 for h in state.get("posted", []) if h.get("date") == d.isoformat() and (h.get("media_id") or h.get("permalink")))
     limit = int((cfg.get("schedule") or {}).get("max_per_day", 1)) if os.environ.get("SLOT") == "1" else 1
+    if os.environ.get("SLOT") == "1" and not dry and os.environ.get("FORCE") != "1":
+        # 実験の枠は、決めた時刻（config の schedule.slots）にだけ出す。同じ時刻に2回は出さない
+        import slot_now
+        now = datetime.now(timezone(timedelta(hours=9)))
+        if now.hour not in slot_now.hours_for(cfg, d):
+            log(f"今（{now:%H:%M}）は実験の投稿の時刻ではないため、投稿しません（今日の時刻: {slot_now.hours_for(cfg, d)}）")
+            return 0
+        if any(h.get("date") == d.isoformat() and h.get("slot") and str(h.get("posted_at", ""))[11:13] == f"{now.hour:02d}"
+               for h in state.get("posted", [])):
+            log(f"{now.hour} 時の枠はもう投稿済みのため、投稿しません")
+            return 0
     if not dry and os.environ.get("FORCE") != "1" and today_n >= limit:
         log(f"本日（{d}）はもう {today_n} 本投稿済みのため、投稿しません（上限 {limit} 本）")
         return 0
