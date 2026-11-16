@@ -196,10 +196,10 @@ def pick_post(cfg: dict, posts: list[dict], d: date, state: dict, learning: dict
         if p.get("date") == iso and p["id"] not in posted_ids:
             return p
 
-    unposted = [p for p in posts if p["id"] not in posted_ids and not p.get("date")]
+    unposted = [p for p in posts if p["id"] not in posted_ids and not p.get("date") and not p.get("exp")]
     if not unposted:
         state["posted"] = []
-        unposted = [p for p in posts if not p.get("date")]
+        unposted = [p for p in posts if not p.get("date") and not p.get("exp")]
 
     seasonal = [p for p in unposted if p.get("months") and d.month in p["months"]]
     anytime = [p for p in unposted if not p.get("months")]

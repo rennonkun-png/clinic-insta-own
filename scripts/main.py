@@ -87,6 +87,13 @@ def main() -> int:
         post = next((p for p in posts if p["id"] == want or p["id"].endswith(":" + want)), None)
         if post is None:
             sys.exit(f"投稿 {want} が見つかりません")
+    elif os.environ.get("SLOT") == "1":  # 時間の実験の枠: 実験用に作ったネタ（"exp": true）だけを、並べた順に出す
+        done = {h["id"] for h in state.get("posted", [])}
+        cand = [p for p in posts if p.get("exp") and p["id"] not in done]
+        if not cand:
+            log("実験用のネタがまだ（もう）無いため、この枠では投稿しません")
+            return 0
+        post = cand[0]
     else:
         post = pick_post(cfg, posts, d, state, learning)
     fmt = os.environ.get("FORMAT") or choose_format(cfg, post, d, learning, ffmpeg_ok=media.ffmpeg_available())
