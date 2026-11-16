@@ -14,6 +14,7 @@ from __future__ import annotations
 import os
 import subprocess
 import sys
+from datetime import datetime, timedelta, timezone
 
 from common import (
     OUTPUT_DIR,
@@ -72,10 +73,12 @@ def main() -> int:
     if not ok and os.environ.get("FORCE") != "1":
         log(f"本日は投稿しません: {reason}")
         return 0
-    # 同じ日に2回投稿しない（手動で先に投稿した日に、決まった時刻の実行が来たときなど）
-    if not dry and os.environ.get("FORCE") != "1" and any(
-            h.get("date") == d.isoformat() and (h.get("media_id") or h.get("permalink")) for h in state.get("posted", [])):
-        log(f"本日（{d}）はもう投稿済みのため、投稿しません")
+    # 同じ日に出しすぎない。ふだんは1日1本（手動で先に投稿した日に、決まった時刻の実行が来たときなど）。
+    # 時間の実験の枠（SLOT=1）のときは config の schedule.max_per_day 本まで
+    today_n = sum(1 for h in state.get("posted", []) if h.get("date") == d.isoformat() and (h.get("media_id") or h.get("permalink")))
+    limit = int((cfg.get("schedule") or {}).get("max_per_day", 1)) if os.environ.get("SLOT") == "1" else 1
+    if not dry and os.environ.get("FORCE") != "1" and today_n >= limit:
+        log(f"本日（{d}）はもう {today_n} 本投稿済みのため、投稿しません（上限 {limit} 本）")
         return 0
 
     posts = load_posts(cfg, learning)
@@ -162,6 +165,8 @@ def main() -> int:
             "media_id": media_id,
             "permalink": permalink,
             "followers_at_post": me.get("followers_count"),
+            "posted_at": datetime.now(timezone(timedelta(hours=9))).isoformat(timespec="minutes"),
+            "slot": os.environ.get("SLOT") == "1",
         }
     )
     save_json(STATE_PATH, state)

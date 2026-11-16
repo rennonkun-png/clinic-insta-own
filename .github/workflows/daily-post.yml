@@ -20,6 +20,10 @@ on:
         type: choice
         options: ["", "image", "carousel", "reel"]
         default: ""
+      slot:
+        description: "時間の実験の枠として出す（同じ日に何本か出す。上限は config の schedule.max_per_day）"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -88,6 +92,7 @@ jobs:
           DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
           FORCE: ${{ inputs.force && '1' || '0' }}
           FORMAT: ${{ inputs.format }}
+          SLOT: ${{ inputs.slot && '1' || '0' }}
         run: python scripts/main.py
 
       - name: 生成したメディアを保存（確認用）

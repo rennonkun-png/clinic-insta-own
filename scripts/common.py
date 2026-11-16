@@ -191,11 +191,11 @@ def pick_post(cfg: dict, posts: list[dict], d: date, state: dict, learning: dict
     """
     learning = learning or load_learning()
     iso = d.isoformat()
-    for p in posts:
-        if p.get("date") == iso:
+    posted_ids = {x["id"] for x in state.get("posted", [])}
+    for p in posts:  # 同じ日に何本か出すときは、出し終えた日付指定の投稿は飛ばす
+        if p.get("date") == iso and p["id"] not in posted_ids:
             return p
 
-    posted_ids = {x["id"] for x in state.get("posted", [])}
     unposted = [p for p in posts if p["id"] not in posted_ids and not p.get("date")]
     if not unposted:
         state["posted"] = []
