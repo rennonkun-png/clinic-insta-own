@@ -1,10 +1,8 @@
 name: Instagram 毎日自動投稿
 
 on:
-  schedule:
-    # 本番の投稿時刻（日本時間 19:00）は Cloudflare の「insta-timer」が合図を送る（GitHub の定期実行は数時間遅れることがあるため）。
-    # ここは合図が届かなかったときの予備（日本時間 21:30 = UTC 12:30）。同じ日に2回は投稿しない。
-    - cron: "30 12 * * *"
+  # 投稿の時刻は Cloudflare の「insta-timer」が合図を送る（GitHub の定期実行は数時間遅れることがあるため、ここには時刻を書かない）。
+  # 時間の実験（11/17〜11/29）の間は、古いネタの投稿（予備の 21:30）は止めている。
   workflow_dispatch:
     inputs:
       dry_run:

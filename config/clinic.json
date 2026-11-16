@@ -70,7 +70,7 @@
     "start_date": "2026-11-15",
     "order": "sequence",
     "max_per_day": 3,
-    "_max_per_day_help": "時間の実験（11/17〜11/29）の間だけ、1日3本（7・12・18時 と 9・15・21時 を1日おき）。Cloudflare の insta-timer が合図する"
+    "_max_per_day_help": "時間の実験（11/17〜11/29）の間だけ、1日3本。1日目 7・12・19時、2日目 8・13・20時、3日目 9・14・21時 を順にくり返す。Cloudflare の insta-timer が合図する"
   },
   "ai": {
     "auto_brushup": true,
