@@ -38,6 +38,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # 合図が出た時点ではなく、動き出した時点の最新を読む（待たされた実行が古い投稿履歴で二重に出さないように）
+          ref: main
 
       - uses: actions/setup-python@v5
         with:
