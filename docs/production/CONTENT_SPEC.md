@@ -46,7 +46,7 @@
 | `design` | 必須 | `"note"` / `"color"` / `"photo"` | カルーセルの見た目の型。となりの投稿と同じにしない |
 | `palette` | 場合 | 0 / 1 / 2 | design が color のときだけ。背景色（0・1・2 がピンク・紺・深緑のいずれか）。color の投稿どうしで切り替える |
 | `reel_style` | 必須 | `"screen"` / `"telop"` / `"photo"` | リールの型。となりの投稿と同じにしない（7章） |
-| `end_style` | 必須 | `"ask"` / `"save"` / `"recap"` | リールの締めの形。ask=問いかけ、save=保存を促す、recap=まとめの項目を出す |
+| `end_style` | 必須 | `"ask"` / `"save"` / `"recap"` / `"plain"` | リールの締めの形。ask=問いかけ、save=保存を促す、recap=まとめの項目を出す、plain=保存の印を出さない（言い切り、または「プロフィールへ」の一言で締める。2026-11-17 追加） |
 | `reel` | 必須 | オブジェクト | リールの冒頭と場面（7章） |
 | `narration` | 必須 | 文字列の配列 | リールの読み上げ台本（9章） |
 | `page_photos` | 場合 | パスの配列 | 中のページとリールの写真。`scripts/assign_photos.py` が書く（11章）。手で書かない |
@@ -174,7 +174,7 @@ form を使った投稿は、表紙や lead も型に合う言い方にしてよ
 | `compare` | `ng`, `ok`（各24字以内）, `say`, `sec` | ✕と○のカードが順に出る |
 | `text` | `lines`（2行、各10字以内）, `say`（20字以内）, `sec` | 大きな文字だけ。lines と say を同じにしない |
 | `checklist` | `title`（12字以内）, `items`（3〜4個、各13字以内。英字の略語や長い製品名を避ける）, `say`, `sec` | 項目が1つずつ出てチェック |
-| `end` | `lines`（2行、各9字以内）, `say`（22字以内。言い切る。「〜に」「〜を」で終えない）, `sec`、end_style が ask なら `ask`（30字以内） | 締め。end_style で形が変わる（ask=問いかけの吹き出し＋「コメントで教えてください」、recap=summary の項目、save=保存アイコン） |
+| `end` | `lines`（2行、各9字以内）, `say`（22字以内。言い切る。「〜に」「〜を」で終えない）, `sec`、end_style が ask なら `ask`（30字以内） | 締め。end_style で形が変わる（ask=問いかけの吹き出し＋「コメントで教えてください」、recap=summary の項目、save=保存アイコン、plain=大きな2行と say だけ。保存アイコンなし） |
 
 ※R14 で gbp-insights に `{"type": "map"}` の場面を使う案が出たが、`scripts/reel_screen.py` には map の場面がない（描かれない）。使わない。
 
@@ -275,6 +275,7 @@ caption_lead に書いてよい URL は次だけ（開けることを確認済�
 | Perplexity | https://www.perplexity.ai/ |
 | Microsoft Clarity | https://clarity.microsoft.com/ |
 | Googleマップ | https://www.google.com/maps |
+| 医療情報ネット（ナビイ）（厚生労働省。2026-11-17 に開けることを確認） | https://www.iryou.teikyouseido.mhlw.go.jp/ |
 
 書き方の例: `Googleビジネスプロフィール：https://business.google.com/`（全角のコロン）。
 

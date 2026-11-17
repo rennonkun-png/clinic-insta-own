@@ -19,7 +19,7 @@ import note_style as ns
 import reel_screen as rs
 import voice
 from common import log
-from reel_anim import FPS, H, W, Writer, _zoom, hold_until, ease_back, ease_in_out, ease_out
+from reel_anim import FPS, H, W, Writer, _zoom, hold_until, ease_back, ease_in_out, ease_out, pulse, solid_in, underline
 
 BLACK = (16, 17, 20)
 NL = chr(10)  # 改行
@@ -89,6 +89,27 @@ def _rise(layer: Image.Image, t: float, dur: float = 0.35, dist: int = 90) -> Im
     return out
 
 
+def _split_rows(layer: Image.Image) -> list[Image.Image]:
+    """文字の層を、行ごとの層に分ける（1行ずつ出すため）。"""
+    hb = layer.getbbox()
+    if not hb:
+        return []
+    ys = [y for y in range(hb[1], hb[3]) if layer.crop((0, y, W, y + 1)).getbbox()]
+    groups, start, prev_y = [], ys[0], ys[0]
+    for y in ys[1:]:
+        if y - prev_y > 6:
+            groups.append((start, prev_y + 1))
+            start = y
+        prev_y = y
+    groups.append((start, prev_y + 1))
+    out = []
+    for y0, y1 in groups:
+        ly = _layer()
+        ly.paste(layer.crop((0, y0, W, y1)), (0, y0))
+        out.append(ly)
+    return out
+
+
 def _shake(t: float, dur: float = 0.18, amp: int = 14) -> tuple[int, int]:
     if t <= 0 or t >= dur:
         return 0, 0
@@ -106,10 +127,13 @@ class Base:
         self.last: Image.Image | None = None
         self.nar = voice.Narration(cfg, post, out.parent / f"{out.stem}_voice")
 
+    _need = 0.0  # いまの場面の読み上げに必要な秒数（場面の中の動きを、話し終わるまで続けるために使う）
+
     def voiced(self, wr, idx: int, scene) -> None:
         """場面を描き、読み上げが長ければ話し終わるまで絵を残す。"""
         start = wr.n
         self.nar.mark(idx, start / FPS)
+        self._need = self.nar.need(idx)
         scene()
         last = hold_until(wr, start, self.nar.need(idx), self.last)
         if last is not None:
@@ -261,11 +285,17 @@ class Base:
         de = ImageDraw.Draw(empty)
         for r0, r1 in rows:
             de.rectangle([int(W * 0.02), r0, card.width - int(W * 0.02), r1], fill=self.card_fill + (255,))
-        span = max(0.35 * len(rows), (dur - t0) * 0.62)  # 読み上げの前半〜6割ほどで全部出しきる
+        # 最後の項目が場面の7割あたりで出るように間をあける（出そろったあと、同じ絵で長く止まらないように）
+        # ただし最後の項目を読む時間（2.2秒）は残す
+        if len(rows) == 2:  # 2つだけ（Q→A、×→○）のときは、あとの1つが長い文なので早めに出して読む時間をとる
+            t_last = max(t0 + 0.35, min(dur * 0.45, dur - 2.7))
+        else:
+            t_last = max(t0 + 0.35 * (len(rows) - 1), min(dur * 0.72, dur - 2.2))
         out = empty
         latest = None
+        a = 1.0
         for j, (r0, r1) in enumerate(rows):
-            tj = t0 + span * j / len(rows)
+            tj = t0 + (t_last - t0) * j / (len(rows) - 1)
             if t < tj:
                 break
             a = ease_out(min(1.0, (t - tj) / 0.35))
@@ -277,6 +307,27 @@ class Base:
         if latest is not None:
             ImageDraw.Draw(out).rounded_rectangle([int(W * 0.012), latest[0] + 8, int(W * 0.012) + 10, latest[1] - 8],
                                                   radius=5, fill=self.n.primary + (255,))
+        # まだ出ていない項目のぶんの空白は見せない。カードは項目が出るのに合わせて下へ伸びる
+        shown = sum(1 for j in range(len(rows)) if t >= t0 + (t_last - t0) * j / (len(rows) - 1))
+        if shown < len(rows) or a < 1:
+            pad = card.height - rows[-1][1]
+            if shown == 0:
+                bottom = rows[0][0] + pad
+            else:
+                prev = rows[shown - 2][1] if shown >= 2 else rows[0][0]
+                bottom = int(prev + (rows[shown - 1][1] - prev) * a) + pad
+            bottom = max(int(W * 0.09), min(card.height, bottom))
+            if bottom < card.height:
+                mask = Image.new("L", out.size, 0)
+                ImageDraw.Draw(mask).rounded_rectangle([0, 0, card.width - 1, bottom - 1], radius=int(W * 0.04), fill=255)
+                cut = Image.new("RGBA", out.size, (0, 0, 0, 0))
+                base = Image.new("RGBA", out.size, self.card_fill + (255,))
+                base.alpha_composite(out)  # 下の角を丸め直すため、いったん地の色で埋めてから切り抜く
+                cut.paste(base, (0, 0), mask)
+                if self.card_fill != (255, 255, 255):  # 白い背景の場面のカードは、縁の線も引き直す
+                    ImageDraw.Draw(cut).rounded_rectangle([0, 0, card.width - 1, bottom - 1], radius=int(W * 0.04),
+                                                          outline=(222, 225, 230, 255), width=3)
+                out = cut
         return out
 
     def end_scene(self, wr: Writer) -> None:
@@ -285,6 +336,7 @@ class Base:
             "lines": ["保存して", "*自院でも*確かめて"], "say": "あとで見返せるように"}
         scr = rs.ScreenReel.__new__(rs.ScreenReel)
         scr.x, scr.spec, scr.out, scr.screen, scr.last = self.x, {}, self.out, None, self.last
+        scr._need, scr._start = self._need, wr.n  # 締めの動きを、話し終わるまで続ける
         scr.end(wr, dict(end, sec=end.get("sec", 3.0)))
         self.last = scr.last
 
@@ -308,22 +360,26 @@ class Telop(Base):
             ly, y = _text_layer(self.n, ln, y, 0.115, stroke=10, accent=designs._yellow(self.n), align="center")
             layers.append(ly)
             y += int(W * 0.02)
-        steps = int(2.2 * FPS)
+        # 0.0秒のコマから全部の行を不透明で出す。話し終わるまでを2拍に分け、
+        # 2拍目で写真に寄って切り替え、強調の行をふくらませて下線を引く（同じ絵のまま止めない）
+        dur = max(2.2, self._need)
+        steps = int(dur * FPS)
+        tb = max(1.1, dur * 0.47)
+        yellow = designs._yellow(self.n)
         for k in range(steps):
-            t = k / FPS + 0.12  # 1コマ目から文字が出ている（黒い空白のコマを作らない）
-            fr = _zoom(bg, 1.0 + 0.2 * ease_out(k / steps), 0.4).convert("RGBA")
-            dx = dy = 0
+            t = k / FPS
+            beat2 = t >= tb
+            fr = _zoom(bg, 1.0 + 0.12 * (k / steps) + (0.13 if beat2 else 0.0), 0.5 if beat2 else 0.4).convert("RGBA")
             for i, ly in enumerate(layers):
-                ti = t - 0.1 - i * 0.28
-                fr.alpha_composite(_slam(ly, ti))
-                sx, sy = _shake(ti - 0.32)
-                dx, dy = dx + sx, dy + sy
-            if dx or dy:
-                fr = Image.new("RGBA", (W, H), BLACK + (255,)).copy()
-                base = _zoom(bg, 1.0 + 0.2 * ease_out(k / steps), 0.4).convert("RGBA")
-                for i, ly in enumerate(layers):
-                    base.alpha_composite(_slam(ly, t - 0.1 - i * 0.28))
-                fr.paste(base, (dx, dy))
+                last = i == len(layers) - 1
+                fr.alpha_composite(pulse(solid_in(ly, t), t - tb) if last else solid_in(ly, t))
+            if layers:
+                underline(fr, layers[-1], t - tb - 0.1, yellow)
+            sx, sy = _shake(t - tb, amp=10)
+            if sx or sy:
+                base = Image.new("RGBA", (W, H), BLACK + (255,))
+                base.paste(fr, (sx, sy))
+                fr = base
             self.put(wr, fr)
 
     def point(self, wr: Writer, i: int, pt: dict) -> None:
@@ -389,6 +445,9 @@ class Telop(Base):
         stat_num = pt.get("num") if pt.get("kind") == "stat" else None
         dur = max(1.6 + min(2.8, ns._read_sec(pt) * 0.7), self.nar.need(i))  # 話し終わるまで、この場面の中で動かし続ける
         steps = int(dur * FPS)
+        body_lines = _split_rows(body) if body is not None else []
+        # 本文は1行ずつ、場面の7割までかけて出す（最後の行を読む時間は残す）
+        body_gap = max(0.3, (min(dur * 0.7, dur - 1.8) - 0.7) / max(1, len(body_lines) - 1)) if len(body_lines) > 1 else 0.3
         # 前の場面を押し出して入る（縦方向にワイプ）
         prev = self.last
         for k in range(steps):
@@ -402,7 +461,7 @@ class Telop(Base):
             for j, hl in enumerate(head_lines or [head]):
                 fr.alpha_composite(_slam(hl, t - 0.1 - j * 0.22))
             if card is not None:
-                tc = t - 0.35
+                tc = t - (0.35 if len(rows) > 1 else max(0.35, min(dur * 0.4, dur - 2.4)))
                 if tc > 0:  # カードは上から順に現れる（項目が1つずつ出てくるように見える）
                     e = ease_in_out(min(1.0, tc / 0.6))
                     x = int((W - card.width) / 2)
@@ -411,8 +470,9 @@ class Telop(Base):
                     cv = self.card_at(card, rows, t, 0.55, dur)
                     fr.alpha_composite(cv.crop((0, 0, card.width, h_show)), (x, y - int(36 * drift)))
             elif body is not None:
-                bl = _rise(body, t - 0.7, 0.4, 60)
-                fr.alpha_composite(bl.crop((0, int(30 * drift), W, H)), (0, 0))
+                for j, bl0 in enumerate(body_lines or [body]):
+                    bl = _rise(bl0, t - 0.7 - j * body_gap, 0.4, 60)
+                    fr.alpha_composite(bl.crop((0, int(30 * drift), W, H)), (0, 0))
             self.progress(fr, i, ink if not light else ns.INK, frac=(k + 1) / steps)
             fr = _zoom(fr.convert("RGB"), 1.0 + 0.035 * drift, 0.45).convert("RGBA")  # ゆっくり寄り続ける
             if k < 6 and prev is not None:  # 6コマで前の場面からワイプ
@@ -451,13 +511,21 @@ class PhotoStory(Base):
         for ln in lines:
             ly, y = _text_layer(self.n, ln, y, 0.1, stroke=8, accent=designs._yellow(self.n))
             layers.append(ly)
-        steps = int(2.4 * FPS)
+        # 0.0秒のコマから全部の行を不透明で出す。2拍目で写真に寄って切り替え、強調の行に下線を引く
+        dur = max(2.4, self._need)
+        steps = int(dur * FPS)
+        tb = max(1.1, dur * 0.47)
+        yellow = designs._yellow(self.n)
         for k in range(steps):
             t = k / FPS
-            fr = _zoom(bg, 1.12 - 0.12 * ease_out(k / steps), 0.35).convert("RGBA")
+            beat2 = t >= tb
+            fr = _zoom(bg, 1.12 - 0.1 * (k / steps) + (0.14 if beat2 else 0.0), 0.5 if beat2 else 0.35).convert("RGBA")
             fr.alpha_composite(shade)
             for j, ly in enumerate(layers):
-                fr.alpha_composite(_rise(ly, t - 0.15 - j * 0.18))
+                last = j == len(layers) - 1
+                fr.alpha_composite(pulse(solid_in(ly, t), t - tb) if last else solid_in(ly, t))
+            if layers:
+                underline(fr, layers[-1], t - tb - 0.1, yellow)
             self.put(wr, fr)
 
     def point(self, wr: Writer, i: int, pt: dict, photo: str | None) -> None:
@@ -485,6 +553,8 @@ class PhotoStory(Base):
             sub_lines = ns.wrap(probe, ns.strip_rich(pt.get("t", "")), f, int(W * 0.84))
         dur = max(1.6 + min(3.8, ns._read_sec(pt) * 0.95), self.nar.need(i))  # 字幕を読み切れて、話し終わるまでの長さ
         steps = int(dur * FPS)
+        # 字幕は場面の7割までかけて1行ずつ出す（最後の行を読む時間は残す）
+        sub_gap = max(0.35, (min(dur * 0.7, dur - 1.8) - 0.5) / max(1, len(sub_lines) - 1)) if len(sub_lines) > 1 else 0.35
         for k in range(steps):
             t = k / FPS
             z = 1.04 + 0.1 * (k / steps)
@@ -501,8 +571,9 @@ class PhotoStory(Base):
             fr.alpha_composite(dark, (0, 0))
             fr.alpha_composite(_rise(badge, t))
             fr.alpha_composite(_rise(head, t - 0.08, 0.4, 70))
-            if card is not None and t > 0.7:
-                e = ease_out(min(1.0, (t - 0.7) / 0.4))
+            t_card = 0.7 if len(rows) > 1 else max(0.7, min(dur * 0.4, dur - 2.4))  # 項目が1つだけのカードは遅れて出す
+            if card is not None and t > t_card:
+                e = ease_out(min(1.0, (t - t_card) / 0.4))
                 c = self.card_at(card, rows, t, 0.9, dur).copy()
                 c.putalpha(c.getchannel("A").point(lambda v: int(v * e)))
                 fr.alpha_composite(c, (int((W - card.width) / 2), int(max(hy + W * 0.06, H * 0.72 - card.height) + (1 - e) * 80)))
@@ -510,7 +581,7 @@ class PhotoStory(Base):
                 d = ImageDraw.Draw(fr)
                 yy = int(H * 0.62)
                 for j, ln in enumerate(sub_lines):
-                    tj = t - 0.5 - j * 0.35  # 1行ずつ、読める速さで続けて出す
+                    tj = t - 0.5 - j * sub_gap  # 1行ずつ、読み上げの長さに合わせて間をあけて出す
                     if tj <= 0:
                         continue
                     a = int(255 * min(1.0, tj / 0.25))

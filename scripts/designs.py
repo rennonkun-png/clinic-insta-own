@@ -107,7 +107,24 @@ PALETTES = [None, (28, 40, 66), (14, 74, 70)]  # None = 主色（ブランドの
 
 def _bg(n: Note):
     return getattr(n, "bg", None) or n.primary
-def color_cover(n: Note, post: dict, W: int, H: int, page: str = "") -> Image.Image:
+def color_cover(n: Note, post: dict, W: int, H: int, page: str = "", bleed: int = 0) -> Image.Image:
+    """bleed: リール表紙用。上下にその高さだけ広げ、写真は上端まで・色は下端まで続ける（文字の位置は真ん中の H の中のまま）。"""
+    if bleed:
+        inner = color_cover(n, post, W, H, page)
+        img = Image.new("RGB", (W, H + bleed * 2), _bg(n))
+        img.paste(inner, (0, bleed))
+        if post.get("cover_photo"):
+            ph = int(H * 0.56)
+            focus = float(post.get("cover_focus", 0.3))
+            ext = ns._photo_fill_bleed(post["cover_photo"], W, ph, focus, bleed, 0)
+            # 写真の上に描いたもの（ラベル・斜めの切れ込み）だけを残して、写真は広げたものに差し替える
+            from PIL import ImageChops
+            plain = ns._photo_fill(post["cover_photo"], W, ph, focus)
+            over = ImageChops.difference(inner.crop((0, 0, W, ph)), plain).convert("L").point(lambda v: 255 if v > 6 else 0)
+            img.paste(ext, (0, 0))
+            img.paste(inner.crop((0, 0, W, ph)), (0, bleed), over)
+        ns.cover_tag(ImageDraw.Draw(img), n, post, W, bleed + int(W * 0.06))
+        return img
     img = Image.new("RGB", (W, H), _bg(n))
     ph = int(H * 0.56)
     if post.get("cover_photo"):

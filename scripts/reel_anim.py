@@ -36,6 +36,48 @@ def ease_back(t: float) -> float:
     return 1 + c3 * (t - 1) ** 3 + c1 * (t - 1) ** 2
 
 
+def solid_in(layer: Image.Image, t: float, dur: float = 0.3, dist: int = 24) -> Image.Image:
+    """最初のコマから不透明のまま出し、少し下から定位置へ上がる（0.0秒のコマでも字がはっきり読める）。"""
+    if t >= dur:
+        return layer
+    out = Image.new("RGBA", layer.size, (0, 0, 0, 0))
+    out.alpha_composite(layer, (0, int((1 - ease_out(max(0.0, t) / dur)) * dist)))
+    return out
+
+
+def pulse(layer: Image.Image, t: float, dur: float = 0.34, amp: float = 0.05) -> Image.Image:
+    """その場で少しふくらんで戻る（画面の幅からはみ出さない大きさまで）。"""
+    if t <= 0 or t >= dur:
+        return layer
+    box = layer.getbbox()
+    if not box:
+        return layer
+    import math
+    piece = layer.crop(box)
+    s = 1 + amp * math.sin(math.pi * t / dur)
+    s = min(s, (W - 16) / max(1, piece.width))
+    if s <= 1.001:
+        return layer
+    pw, ph = int(piece.width * s), int(piece.height * s)
+    piece = piece.resize((pw, ph), Image.BILINEAR)
+    out = Image.new("RGBA", layer.size, (0, 0, 0, 0))
+    cx, cy = (box[0] + box[2]) // 2, (box[1] + box[3]) // 2
+    out.alpha_composite(piece, (max(0, cx - pw // 2), max(0, cy - ph // 2)))
+    return out
+
+
+def underline(fr: Image.Image, layer: Image.Image, t: float, color, dur: float = 0.4) -> None:
+    """文字の層の下に、左から伸びる線を引く（冒頭の2拍目で、強調の行に引く）。"""
+    box = layer.getbbox()
+    if t <= 0 or not box:
+        return
+    from PIL import ImageDraw
+    x0, x1 = box[0] + 6, box[2] - 6
+    x = x0 + int((x1 - x0) * ease_out(min(1.0, t / dur)))
+    if x - x0 > 14:
+        ImageDraw.Draw(fr).rounded_rectangle([x0, box[3] + 10, x, box[3] + 24], radius=7, fill=tuple(color) + (255,))
+
+
 class Writer:
     def __init__(self, out: Path, total_sec: float):
         ff = ffmpeg_path()

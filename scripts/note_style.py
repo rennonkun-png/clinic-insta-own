@@ -375,6 +375,25 @@ def _photo_fill(path: str, W: int, H: int, focus_y: float = 0.4) -> Image.Image:
     return im.crop((x, y, x + W, y + H))
 
 
+def _photo_fill_bleed(path: str, W: int, H: int, focus_y: float, top: int, bottom: int) -> Image.Image:
+    """_photo_fill と同じ切り出しを、上に top・下に bottom だけ広げて返す（リール表紙の上下を写真の続きで埋める）。
+    真ん中の H の範囲に写る場所は、できるだけ元の切り出しと同じにする。写真が足りないときだけ拡大する。"""
+    from generate_image import ROOT
+    pth = Path(path)
+    pth = pth if pth.is_absolute() else ROOT / pth
+    im = Image.open(pth).convert("RGB")
+    s0 = max(W / im.width, H / im.height)
+    w0, h0 = int(im.width * s0 + 1), int(im.height * s0 + 1)
+    cx = ((w0 - W) // 2 + W / 2) / w0          # 元の切り出しの中心（写真の中での割合）
+    cy = (int((h0 - H) * focus_y) + H / 2) / h0
+    FH = H + top + bottom
+    s = max(s0, FH / im.height)
+    im = im.resize((int(im.width * s + 1), int(im.height * s + 1)), Image.LANCZOS)
+    x = int(min(max(0, cx * im.width - W / 2), im.width - W))
+    y = int(min(max(0, cy * im.height - H / 2 - top), im.height - FH))
+    return im.crop((x, y, x + W, y + FH))
+
+
 def draw_cover_photo(n: Note, post: dict, W: int, H: int, reel: bool = False, page: str = "", layers: bool = False):
     """写真を全面に敷き、太い縁取り文字を重ねる表紙（伸びている投稿に多い形）。"""
     bg = _photo_fill(post["cover_photo"], W, H, float(post.get("cover_focus", 0.4)))
@@ -434,17 +453,18 @@ def draw_cover_photo(n: Note, post: dict, W: int, H: int, reel: bool = False, pa
     return out.convert("RGB")
 
 
-def draw_cover_mock(n: Note, post: dict, W: int, H: int, reel: bool = False, page: str = "") -> Image.Image:
-    """主色の背景に大きな白文字、下に実際の画面のような図を斜めに置く表紙。"""
+def draw_cover_mock(n: Note, post: dict, W: int, H: int, reel: bool = False, page: str = "", bleed: int = 0) -> Image.Image:
+    """主色の背景に大きな白文字、下に実際の画面のような図を斜めに置く表紙。
+    bleed: 上下にその高さだけ同じ背景を広げて描く（リール表紙用。文字の位置は真ん中の H の中のまま、図は下端まで続ける）。"""
     import designs  # 背景色は投稿ごとにピンク・紺・深緑から（グリッドが1色に偏らないように）
     designs._set_palette(n, post)
     bg = n.bg or n.primary
-    img = Image.new("RGB", (W, H), bg)
+    img = Image.new("RGB", (W, H + bleed * 2), bg)
     d = ImageDraw.Draw(img)
     light = mix(bg, PAPER, 0.12)
-    d.ellipse([int(W * 0.25), int(H * 0.42), int(W * 1.45), int(H * 0.42) + int(W * 1.2)], fill=light)
+    d.ellipse([int(W * 0.25), bleed + int(H * 0.42), int(W * 1.45), bleed + int(H * 0.42) + int(W * 1.2)], fill=light)
     M = int(W * 0.075)
-    top = int(H * 0.13) if reel else int(W * 0.075)
+    top = bleed + (int(H * 0.13) if reel else int(W * 0.075))
     f = n.f(int(W * 0.03))
     label = n.label
     pw = _w(d, label, f) + 44
@@ -482,7 +502,7 @@ def draw_cover_mock(n: Note, post: dict, W: int, H: int, reel: bool = False, pag
     t = spec.get("type", "map")
     s = W * (1.05 if t == "hp_pair" else (0.95 if t in ("dashboard", "card") else 0.78)) / im.width
     im = im.resize((int(im.width * s), int(im.height * s)), Image.LANCZOS)
-    bottom_limit = int(H * 0.8) if reel else H
+    bottom_limit = (int(H * 0.8) if reel else H) + bleed * 2
     py = y - int(W * 0.02)
     im = im.crop((0, 0, im.width, max(10, min(im.height, bottom_limit - py))))
     img.paste(im, ((W - im.width) // 2 + int(W * 0.03), py) if t == "card" else (W - im.width + int(W * 0.08), py), im)
@@ -1036,26 +1056,55 @@ def draw_summary(n: Note, post: dict, pts: list[dict], W: int, H: int, reel: boo
 
 
 # ---------------------------------------------------------------- 出力
+def _reel_cover_full(n: "Note", post: dict, w: int, h: int, B: int) -> Image.Image:
+    """リールの表紙（1080x1920）。文字は一覧で見える真ん中の3:4（w x h）に置いたまま、
+    上下 B px は帯で埋めずに、写真・背景・図をそのまま続けて描く（上下で色の違う帯を作らない）。"""
+    import designs
+    design = post.get("design", "note")
+    photo, mock = post.get("cover_photo"), post.get("cover_mock")
+    if design != "note":
+        designs._set_palette(n, post)
+    if mock and not photo:  # 図の表紙: 背景を上下に広げ、図は下端まで続ける
+        keep = n.primary
+        if design == "color":
+            n.primary = designs._bg(n)
+        img = draw_cover_mock(n, post, w, h, bleed=B)
+        n.primary = keep
+        cover_tag(ImageDraw.Draw(img), n, post, w, B + int(w * 0.06))
+        return img.convert("RGB")
+    if design == "color" and photo:  # 上が写真・下が色: 写真を上端まで、色を下端まで
+        return designs.color_cover(n, post, w, h, bleed=B).convert("RGB")
+    if design == "note" and photo:  # 全面写真: 写真を上下に広げ、文字と影の層を真ん中に重ねる
+        _, over = draw_cover_photo(n, post, w, h, layers=True)
+        cover_tag(ImageDraw.Draw(over), n, post, w, int(w * 0.06))
+        full = _photo_fill_bleed(photo, w, h, float(post.get("cover_focus", 0.4)), B, B).convert("RGBA")
+        layer = Image.new("RGBA", (w, h + B * 2), (0, 0, 0, 0))
+        layer.paste(over.crop((0, 0, w, 1)).resize((w, B)), (0, 0))          # 影の濃さを上下にそのまま続ける
+        layer.paste(over.crop((0, h - 1, w, h)).resize((w, B)), (0, h + B))
+        layer.paste(over, (0, B))
+        full.alpha_composite(layer)
+        return full.convert("RGB")
+    # それ以外（白地に写真のカード、方眼の表紙など）: 上端・下端の色で広げる（端が単色なので境目は出ない）
+    img = (designs.draw_cover(n, post, w, h, design) if design != "note" else draw_cover(n, post, w, h)).convert("RGB")
+    full = Image.new("RGB", (w, h + B * 2))
+    full.paste(img.crop((0, 0, w, 1)).resize((w, B)), (0, 0))
+    full.paste(img.crop((0, h - 1, w, h)).resize((w, B)), (0, h + B))
+    full.paste(img, (0, B))
+    return full
+
+
 def render_square(cfg: dict, post: dict, out_path: Path, size: int = 1080, reel: bool = False) -> Path:
     """表紙の画像。reel=True のときはリール用の縦長（1080x1920）。
     プロフィールの一覧ではリールの表紙が縦3:4（上下240pxずつを除いた範囲）に切られるので、文字はその中に収まる配置で描く。"""
     n = Note(cfg)
     w, h = (1080, 1440) if reel else (size, size)  # リールは、一覧で見える3:4で描いてから縦長に広げる
-    if post.get("design", "note") != "note":
+    if reel:
+        img = _reel_cover_full(n, post, w, h, 240)
+    elif post.get("design", "note") != "note":
         import designs
         img = designs.draw_cover(n, post, w, h, post["design"])
     else:
         img = draw_cover(n, post, w, h)
-    if reel:
-        img = img.convert("RGB")
-        full = Image.new("RGB", (1080, 1920))
-        # 上下の余白は、表紙の上端・下端の平均の色でなめらかにつなぐ（ぼかした文字が見えないように）
-        top = img.crop((0, 0, 1080, 12)).resize((1, 1), Image.BOX).getpixel((0, 0))
-        bot = img.crop((0, 1428, 1080, 1440)).resize((1, 1), Image.BOX).getpixel((0, 0))
-        full.paste(Image.new("RGB", (1080, 240), top), (0, 0))
-        full.paste(Image.new("RGB", (1080, 240), bot), (0, 1680))
-        full.paste(img, (0, 240))
-        img = full
     out_path.parent.mkdir(parents=True, exist_ok=True)
     img.save(out_path, "JPEG", quality=93)
     return out_path

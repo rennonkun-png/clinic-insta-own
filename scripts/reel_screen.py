@@ -24,7 +24,7 @@ import mockups as mk
 import note_style as ns
 from common import log
 import voice
-from reel_anim import FPS, H, W, Writer, _zoom, hold_until, ease_back, ease_in_out, ease_out
+from reel_anim import FPS, H, W, Writer, _zoom, hold_until, ease_back, ease_in_out, ease_out, pulse, solid_in, underline
 
 SW, SH = 780, 1690                      # スマホ画面の大きさ
 PX, PY = (W - SW) // 2, 520             # 画面の左上（ステージ上）
@@ -143,6 +143,14 @@ class ScreenReel:
         wr.put(im)
         self.last = im
 
+    _need = 0.0   # いまの場面の読み上げに必要な秒数
+    _start = 0    # いまの場面が始まったコマ
+
+    def _sec(self, wr: Writer, sc: dict, default: float) -> float:
+        """この場面の動きを続ける秒数。読み上げのほうが長ければ、話し終わるまで動きを続ける
+        （動きが先に終わって、同じ絵のまま止まらないように）。"""
+        return max(float(sc.get("sec", default)), self._need - (wr.n - self._start) / FPS)
+
     # ---------------------------------------------------------------- 場面
     def hook(self, wr: Writer, sec: float = 1.9) -> None:
         hk = self.spec["hook"]
@@ -160,16 +168,23 @@ class ScreenReel:
         lw = d.textlength(lab, font=f) + 56
         d.rounded_rectangle([(W - lw) / 2, y0 - 130, (W + lw) / 2, y0 - 130 + f.size * 1.9], radius=int(f.size), fill=n.primary)
         d.text((W / 2, y0 - 130 + f.size * 0.95), lab, font=f, fill=n.on_primary, anchor="mm")
+        # 0.0秒のコマから札と全部の行を不透明で出す。話し終わるまでを2拍に分け、
+        # 2拍目で写真に寄って切り替え、強調の行をふくらませて下線を引く（同じ絵のまま止めない）
+        sec = max(sec, self._need)
         steps = int(sec * FPS)
+        tb = max(1.0, sec * 0.47)
+        yellow = n.marker if ns.luminance(n.marker) > 0.6 else (255, 236, 90)
         for k in range(steps):
             t = k / FPS
-            fr = _zoom(bg.convert("RGB"), 1.0 + 0.16 * ease_out(k / steps), 0.4).convert("RGBA")
+            beat2 = t >= tb
+            fr = _zoom(bg.convert("RGB"), 1.0 + 0.1 * (k / steps) + (0.13 if beat2 else 0.0), 0.5 if beat2 else 0.4).convert("RGBA")
             fr.alpha_composite(shade)
-            fr.alpha_composite(_pop(label, t))
+            fr.alpha_composite(label)
             for i, ly in enumerate(layers):
-                tt = t - 0.12 - i * 0.14
-                if tt > 0:
-                    fr.alpha_composite(_pop(ly, tt, 0.38))
+                last = i == len(layers) - 1
+                fr.alpha_composite(pulse(solid_in(ly, t), t - tb) if last else solid_in(ly, t))
+            if layers:
+                underline(fr, layers[-1], t - tb - 0.1, yellow)
             self.put(wr, fr.convert("RGB"))
 
     def _phone_in(self, wr: Writer, screen: Image.Image, cap: Image.Image, sec: float = 0.45) -> None:
@@ -238,7 +253,9 @@ class ScreenReel:
             self.screen = mk.search_typing(c, q[:i], W=SW, H=SH)
             self._hold(wr, cap, per, t)
             t += per
-        self._hold(wr, cap, 0.35, t)
+        rest = max(0.35, self._need - (wr.n - self._start) / FPS - 0.3)
+        self._hold(wr, cap, rest, t)  # 話し終わるまで待ってから、検索キーを押す
+        t += rest - 0.35
         # 検索キーをタップ
         ky = SH - SW * 0.78
         bx, by = PX + SW * 0.85, PY + ky + SW * 0.03 + 3 * SW * 0.13 + SW * 0.055
@@ -279,7 +296,7 @@ class ScreenReel:
             self.screen = scr
             self.put(wr, _over(self.x.stage(scr), _pop(self.x.caption(sc.get("say", "")), k / FPS)))
         self.screen = res
-        self._hold(wr, cap, float(sc.get("sec", 2.4)), 0.5)
+        self._hold(wr, cap, self._sec(wr, sc, 2.4), 0.5, cam=lambda p: (1 + 0.06 * p, W / 2, PY + SH * 0.4))
 
     def zoom_top3(self, wr: Writer, sc: dict) -> None:
         cap = self.x.caption(sc.get("say", ""))
@@ -292,7 +309,7 @@ class ScreenReel:
             a = ease_out(p / 0.25)
             d.rounded_rectangle([PX + 10, y0, PX + SW - 10, y1], radius=26, outline=self.x.n.primary + (int(255 * a),), width=12)
             return st
-        self._hold(wr, cap, float(sc.get("sec", 2.6)), 0.0, cam=lambda p: (1 + 0.32 * ease_in_out(min(1, p / 0.45)), W / 2, cy),
+        self._hold(wr, cap, self._sec(wr, sc, 2.6), 0.0, cam=lambda p: (1 + 0.32 * ease_in_out(min(1, p / 0.45)), W / 2, cy),
                    extra=frame)
 
     def profile(self, wr: Writer, sc: dict) -> None:
@@ -313,7 +330,7 @@ class ScreenReel:
                     r = int(34 * min(1.0, ease_back(min(1.0, q))))
                     _stamp(d, mx, my, max(4, r), good, col)
             return st
-        self._hold(wr, cap, float(sc.get("sec", 2.8)), 0.3, cam=lambda p: (1 + 0.12 * ease_in_out(p), W / 2, PY + SH * 0.45),
+        self._hold(wr, cap, self._sec(wr, sc, 2.8), 0.3, cam=lambda p: (1 + 0.12 * ease_in_out(p), W / 2, PY + SH * 0.45),
                    extra=stamps)
 
     def chat(self, wr: Writer, sc: dict, first: bool) -> None:
@@ -331,7 +348,7 @@ class ScreenReel:
         base = full.copy()
         y_cut = int(SW * 0.62)
         ImageDraw.Draw(base).rectangle([0, y_cut, SW, SH - SW * 0.22], fill=(255, 255, 255))
-        steps = int(float(sc.get("sec", 3.0)) * FPS)
+        steps = int(self._sec(wr, sc, 3.0) * FPS)
         for k in range(steps):
             p = min(1.0, k / (steps * 0.6))
             h = int((SH - SW * 0.22 - y_cut) * ease_in_out(p))
@@ -372,12 +389,13 @@ class ScreenReel:
         cap = self.x.caption(sc.get("say", ""), y=cap_y, box=True)  # 白地に縁取り文字は汚く見えるので帯付き
         empty = ns._paper(W, H)
         # 1 項目ずつ出てチェックが付く
-        per = 0.5
-        total = int((per * len(items) + float(sc.get("sec", 1.6))) * FPS)
         title_part = card.crop((0, 0, W, rows[0][1] - 10)) if rows else card
         first = empty.copy()
         first.paste(title_part, (0, 0))
         self._push_to(wr, first)
+        dur = self._sec(wr, sc, 0.5 * len(items) + float(sc.get("sec", 1.6)))
+        per = max(0.5, min(dur * 0.72, dur - 1.6) / max(1, len(items) - 1))  # 最後の項目が場面の7割あたりで出るように間をあける（出そろってから長く止めない）
+        total = int(dur * FPS)
         for k in range(total):
             t = k / FPS + 0.15
             fr = empty.copy()
@@ -401,8 +419,9 @@ class ScreenReel:
                         dd.line([pts[0], pts[1], (pts[1][0] + (pts[2][0] - pts[1][0]) * (q - 0.5) * 2,
                                                   pts[1][1] + (pts[2][1] - pts[1][1]) * (q - 0.5) * 2)], fill=n.primary, width=14,
                                 joint="curve")
-            if cap.getbbox() and t > per * len(items) * 0.5:
-                fr = _over(fr, _pop(cap, t - per * len(items) * 0.5))
+            t_cap = per * max(1, len(items) - 1) * 0.5 + 0.25  # 字幕は項目の途中で出す
+            if cap.getbbox() and t > t_cap:
+                fr = _over(fr, _pop(cap, t - t_cap))
             self.put(wr, fr)
 
     def end(self, wr: Writer, sc: dict) -> None:
@@ -418,21 +437,32 @@ class ScreenReel:
         cb = cap.getbbox()
         mark_y = (cb[3] if cb else int(H * 0.6)) + 50
         first = bg.convert("RGBA")
-        for ly in lines:
+        for ly in lines[:1]:
             first.alpha_composite(ly)
         self._push_to(wr, first.convert("RGB"))
-        total = int(float(sc.get("sec", 3.2)) * FPS)
+        dur = self._sec(wr, sc, 3.2)
+        total = int(dur * FPS)
+        # 1行目は入ってきた時点で出ている。2行目・ひとこと・保存の印を、話し終わるまでの間に順に出す
+        # （全部が先に出そろって、同じ絵のまま止まらないように）
+        t_line = min(0.9, dur * 0.2)
+        t_cap = max(t_line + 0.3, dur * 0.42)
+        t_mark = max(t_cap + 0.3, dur * 0.62)
         for k in range(total):
-            t = k / FPS + 0.6  # 文字は入ってきた時点で出ている
+            t = k / FPS
             fr = bg.convert("RGBA")
             for i, ly in enumerate(lines):
-                if t - i * 0.15 > 0:
-                    fr.alpha_composite(_pop(ly, t - i * 0.15, 0.4))
-            if t > 0.5:
-                fr.alpha_composite(_pop(cap, t - 0.5))
-            if t > 0.8:  # 保存アイコンが弾む
+                ti = t - t_line - max(0, i - 1) * 0.15
+                if i == 0:
+                    fr.alpha_composite(ly)
+                elif ti > 0:
+                    fr.alpha_composite(_pop(ly, ti, 0.4))
+            if t > t_cap:
+                fr.alpha_composite(_pop(cap, t - t_cap))
+            if t > t_mark and style == "plain":  # 保存を促さない締め: 印のかわりに、ひとことの下に線を引く
+                underline(fr, cap, t - t_mark, (255, 255, 255))
+            elif t > t_mark:  # 保存アイコンが弾み続ける
                 d = ImageDraw.Draw(fr)
-                bounce = abs(((t - 0.8) * 2.2) % 2 - 1)
+                bounce = abs(((t - t_mark) * 2.2) % 2 - 1)
                 hh = 120
                 bx, by = W // 2 - 43, mark_y + 30 - int(30 * bounce)
                 ns._bookmark(d, bx, by, hh, (255, 255, 255))
@@ -463,7 +493,7 @@ class ScreenReel:
         first = bg.convert("RGBA")
         first.alpha_composite(bubble)
         self._push_to(wr, first.convert("RGB"))
-        for k in range(int(float(sc.get("sec", 3.2)) * FPS)):
+        for k in range(int(self._sec(wr, sc, 3.2) * FPS)):
             t = k / FPS
             fr = bg.convert("RGBA")
             fr.alpha_composite(bubble, (0, -int(10 * math.sin(t * 3))))
@@ -516,8 +546,9 @@ class ScreenReel:
             y = max(yy, y + int(fi.size * 1.4)) + int(W * 0.04)
         cap = self.x.caption(say, y=y + 40, size=0.05, box=True)  # 項目のすぐ下（重ならない）
         self._push_to(wr, bg)
-        per = 0.45
-        total = int((per * len(rows) + float(sc.get("sec", 2.4))) * FPS)
+        dur = self._sec(wr, sc, 0.45 * len(rows) + float(sc.get("sec", 2.4)))
+        per = max(0.45, min(dur * 0.6, dur - 2.6) / max(1, len(rows) - 1)) if len(rows) > 1 else 0.45  # 最後の項目が場面の6割あたりで出るように間をあける（読む時間を残す）
+        total = int(dur * FPS)
         for k in range(total):
             t = k / FPS
             fr = bg.convert("RGBA")
@@ -528,8 +559,9 @@ class ScreenReel:
                     piece = ly.copy()
                     piece.putalpha(piece.getchannel("A").point(lambda v, e=e: int(v * e)))
                     fr.alpha_composite(piece, (int((1 - e) * 80), 0))
-            if t > per * len(rows):
-                fr.alpha_composite(_pop(cap, t - per * len(rows)))
+            t_cap = per * max(0, len(rows) - 1) + 0.35
+            if t > t_cap:
+                fr.alpha_composite(_pop(cap, t - t_cap))
             self.put(wr, fr.convert("RGB"))
 
     def hp(self, wr: Writer, sc: dict) -> None:
@@ -543,7 +575,7 @@ class ScreenReel:
                                       ("まつもと眼科", "駅ビル2階すぐ", "コンタクトの処方も"), ("さくら歯科クリニック", "駅から徒歩3分", "土曜も診療しています")])
         scr = mk.clinic_hp(self.x.c, good=good, name=name, hero=hero, sub=sub, W=SW, H=SH)
         self._show(wr, scr, cap)
-        steps = int(float(sc.get("sec", 2.6)) * FPS)
+        steps = int(self._sec(wr, sc, 2.6) * FPS)
         for k in range(steps):
             p = ease_in_out(k / max(1, steps - 1))
             st = self.x.stage(self.screen)
@@ -566,7 +598,7 @@ class ScreenReel:
         cx0, cy0 = (W - cw) // 2, int(H * 0.36)
         mask = Image.new("L", (cw, ch), 0)
         ImageDraw.Draw(mask).rounded_rectangle([0, 0, cw - 1, ch - 1], radius=36, fill=255)
-        steps = int(float(sc.get("sec", 3.0)) * FPS)
+        steps = int(max(float(sc.get("sec", 3.0)), self._need - 0.35) * FPS)
         first = self.x.bg.copy()
         kp0 = [(k, "–") for k, _ in kpis] if kpis else [("電話", "–"), ("ルート検索", "–"), ("サイトへ", "–")]
         first.paste(mk.dashboard(self.x.c, title=title, value="0", delta="+0%", kpis=kp0, series=[1] * 11 + [1.01], W=cw,
@@ -617,7 +649,8 @@ class ScreenReel:
                 d.text((int(W * 0.17), yy), ln, font=f_t, fill=ns.INK)
                 yy += int(f_t.size * 1.45)
             cards.append(card)
-        steps = int(float(sc.get("sec", 3.2)) * FPS)
+        steps = int(max(float(sc.get("sec", 3.2)), self._need - 0.35) * FPS)
+        gap2 = max(0.9, steps / FPS * 0.45)  # 2枚目（こうする）は場面の半ばで出す（出そろってから長く止めない）
         tot = sum(c.height for c in cards) + int(W * 0.06)
         y_top = max(int(H * 0.26), (H - tot) // 2 + int(H * 0.04))  # 2枚のまとまりを縦の真ん中に
         first = self.x.bg.copy()
@@ -627,12 +660,14 @@ class ScreenReel:
             t = k / FPS + 0.5  # 1枚目は入ってきた時点で出ている
             st = self.x.bg.copy()
             y = y_top
+            z = 1.0 + 0.035 * (k / max(1, steps - 1))  # 出そろったあとも止まって見えないよう、カードにゆっくり寄る
             for i, card in enumerate(cards):
-                ti = t - i * 0.9 + 0.25  # 1枚目は切り替えと同時に入ってくる
+                ti = t - i * gap2 + 0.25  # 1枚目は切り替えと同時に入ってくる
                 if ti > 0:
                     e = ease_back(min(1.0, ti / 0.4))
-                    x = int((W - card.width) / 2 + (1 - e) * W * 0.6)
-                    st.paste(card, (x, y))
+                    c2 = card.resize((int(card.width * z), int(card.height * z)), Image.BILINEAR) if k else card
+                    x = int((W - c2.width) / 2 + (1 - e) * W * 0.6)
+                    st.paste(c2, (x, y - (c2.height - card.height) // 2))
                 y += card.height + int(W * 0.06)
             self.put(wr, _over(st, _pop(cap, t + 0.2)))
 
@@ -663,6 +698,7 @@ class ScreenReel:
         y += hh + int(W * 0.03)
         d.rectangle([P, y, P + int(W * 0.12), y + 8], fill=n.primary)
         y += int(W * 0.04)
+        say_top = y - 4
         for ln in sl:
             d.text((P, y), ln, font=fs, fill=ns.SUB)
             y += int(fs.size * 1.6)
@@ -671,10 +707,28 @@ class ScreenReel:
         first = bg.convert("RGBA")
         first.alpha_composite(card, (cx, cy))
         self._push_to(wr, first.convert("RGB"))
-        steps = int(float(sc.get("sec", 2.6)) * FPS)
+        steps = int(self._sec(wr, sc, 2.6) * FPS)
+        # 補足の文は、場面の4割あたりで1行ずつ出す（見出しと同時に出しきって止まらないように）
+        row_h = int(fs.size * 1.6)
+        say_bot = min(ch - 6, say_top + len(sl) * row_h + 8)
+        blank = card.copy()
+        ImageDraw.Draw(blank).rectangle([P - 4, say_top, cw - P + 4, say_bot], fill=(255, 255, 255, 255))
+        t_say = steps / FPS * 0.4 if sl and steps / FPS > 3.0 else -1.0
         for k in range(steps):
             z = 1.0 + 0.04 * (k / max(1, steps - 1))  # 止まって見えないよう、ゆっくり寄る
-            c2 = card.resize((int(cw * z), int(ch * z)), Image.BILINEAR)
+            t = k / FPS
+            now = card
+            if t < t_say:
+                now = blank
+            elif t_say >= 0 and t < t_say + 0.35 * len(sl) + 0.3:
+                now = blank.copy()
+                for j in range(len(sl)):
+                    e = ease_out((t - t_say - j * 0.35) / 0.3)
+                    if e > 0:
+                        y0 = say_top + j * row_h
+                        y1 = min(say_bot, y0 + row_h + (8 if j == len(sl) - 1 else 0))
+                        now.paste(Image.blend(blank.crop((0, y0, cw, y1)), card.crop((0, y0, cw, y1)), e), (0, y0))
+            c2 = now.resize((int(cw * z), int(ch * z)), Image.BILINEAR)
             fr = bg.convert("RGBA")
             fr.alpha_composite(c2, (cx - (c2.width - cw) // 2, cy - (c2.height - ch) // 2))
             self.put(wr, fr.convert("RGB"))
@@ -690,12 +744,14 @@ class ScreenReel:
                 self.last = last
 
         nar.mark(0, 0.0)
+        self._need, self._start = nar.need(0), 0
         self.hook(wr)
         voiced(0, 0)
         first_phone = True
         for si, sc in enumerate(self.spec.get("scenes", []), 1):
             start = wr.n
             nar.mark(si, start / FPS)
+            self._need, self._start = nar.need(si), start
             self._scene(wr, sc, first_phone)
             if sc.get("type") in ("type", "chat"):
                 first_phone = False
