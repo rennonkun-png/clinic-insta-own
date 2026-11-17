@@ -111,6 +111,9 @@ def main() -> int:
     log(f"本日の投稿: [{post['category']}] {post['title']}  形式={fmt}  目的={cfg.get('goals')}")
 
     stem = d.isoformat() + (f"_{want}" if want else "")  # 同じ日に何本も出すときに、画像の名前が重ならないように
+    if os.environ.get("SLOT") == "1":
+        # 時間の実験は同じ日に何本も出す。名前が同じだと、前の枠の動画がまだ公開されたままで、それを投稿してしまう
+        stem += "_" + datetime.now(timezone(timedelta(hours=9))).strftime("%H%M")
     illust = None if is_note(cfg) else get_illustration(cfg, post)  # 医院の写真 or 無料AIイラスト or なし
     files: list[str] = []
     if fmt == "carousel":
