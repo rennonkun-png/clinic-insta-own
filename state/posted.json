@@ -311,6 +311,26 @@
       "followers_at_post": 100,
       "posted_at": "2026-11-17T12:04+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-17",
+      "id": "generated:x1117-2",
+      "category": "webmarketing",
+      "title": "診療時間の「19時まで」、受付の締め切りも書く",
+      "format": "reel",
+      "hook": "question",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18156756244526614",
+      "permalink": "https://www.instagram.com/reel/Df1q_sUOvCG/",
+      "followers_at_post": 100,
+      "posted_at": "2026-11-17T19:04+09:00",
+      "slot": true
     }
   ]
 }
