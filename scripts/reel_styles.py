@@ -364,15 +364,18 @@ class Telop(Base):
         # 2拍目で写真に寄って切り替え、強調の行をふくらませて下線を引く（同じ絵のまま止めない）
         dur = max(2.2, self._need)
         steps = int(dur * FPS)
-        tb = max(1.1, dur * 0.47)
+        tb = max(1.1, dur * 0.4)
+        tb3 = max(tb + 0.9, dur * 0.72)
         yellow = designs._yellow(self.n)
         for k in range(steps):
             t = k / FPS
-            beat2 = t >= tb
-            fr = _zoom(bg, 1.0 + 0.12 * (k / steps) + (0.13 if beat2 else 0.0), 0.5 if beat2 else 0.4).convert("RGBA")
+            beat2, beat3 = t >= tb, t >= tb3
+            # 3拍目でもう一度寄る（下線を引いたあと、話し終わるまで同じ絵で止めない）
+            fr = _zoom(bg, 1.0 + 0.12 * (k / steps) + (0.1 if beat2 else 0.0) + (0.08 if beat3 else 0.0),
+                       0.56 if beat3 else (0.5 if beat2 else 0.4)).convert("RGBA")
             for i, ly in enumerate(layers):
                 last = i == len(layers) - 1
-                fr.alpha_composite(pulse(solid_in(ly, t), t - tb) if last else solid_in(ly, t))
+                fr.alpha_composite(pulse(pulse(solid_in(ly, t), t - tb), t - tb3) if last else solid_in(ly, t))
             if layers:
                 underline(fr, layers[-1], t - tb - 0.1, yellow)
             sx, sy = _shake(t - tb, amp=10)
@@ -514,16 +517,18 @@ class PhotoStory(Base):
         # 0.0秒のコマから全部の行を不透明で出す。2拍目で写真に寄って切り替え、強調の行に下線を引く
         dur = max(2.4, self._need)
         steps = int(dur * FPS)
-        tb = max(1.1, dur * 0.47)
+        tb = max(1.1, dur * 0.4)
+        tb3 = max(tb + 0.9, dur * 0.72)
         yellow = designs._yellow(self.n)
         for k in range(steps):
             t = k / FPS
-            beat2 = t >= tb
-            fr = _zoom(bg, 1.12 - 0.1 * (k / steps) + (0.14 if beat2 else 0.0), 0.5 if beat2 else 0.35).convert("RGBA")
+            beat2, beat3 = t >= tb, t >= tb3
+            fr = _zoom(bg, 1.0 + 0.1 * (k / steps) + (0.1 if beat2 else 0.0) + (0.08 if beat3 else 0.0),
+                       0.5 if beat3 else (0.45 if beat2 else 0.35)).convert("RGBA")
             fr.alpha_composite(shade)
             for j, ly in enumerate(layers):
                 last = j == len(layers) - 1
-                fr.alpha_composite(pulse(solid_in(ly, t), t - tb) if last else solid_in(ly, t))
+                fr.alpha_composite(pulse(pulse(solid_in(ly, t), t - tb), t - tb3) if last else solid_in(ly, t))
             if layers:
                 underline(fr, layers[-1], t - tb - 0.1, yellow)
             self.put(wr, fr)

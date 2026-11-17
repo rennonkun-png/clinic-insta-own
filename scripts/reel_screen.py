@@ -172,17 +172,19 @@ class ScreenReel:
         # 2拍目で写真に寄って切り替え、強調の行をふくらませて下線を引く（同じ絵のまま止めない）
         sec = max(sec, self._need)
         steps = int(sec * FPS)
-        tb = max(1.0, sec * 0.47)
+        tb = max(1.0, sec * 0.4)
+        tb3 = max(tb + 0.9, sec * 0.72)
         yellow = n.marker if ns.luminance(n.marker) > 0.6 else (255, 236, 90)
         for k in range(steps):
             t = k / FPS
-            beat2 = t >= tb
-            fr = _zoom(bg.convert("RGB"), 1.0 + 0.1 * (k / steps) + (0.13 if beat2 else 0.0), 0.5 if beat2 else 0.4).convert("RGBA")
+            beat2, beat3 = t >= tb, t >= tb3
+            fr = _zoom(bg.convert("RGB"), 1.0 + 0.1 * (k / steps) + (0.1 if beat2 else 0.0) + (0.08 if beat3 else 0.0),
+                       0.56 if beat3 else (0.5 if beat2 else 0.4)).convert("RGBA")
             fr.alpha_composite(shade)
             fr.alpha_composite(label)
             for i, ly in enumerate(layers):
                 last = i == len(layers) - 1
-                fr.alpha_composite(pulse(solid_in(ly, t), t - tb) if last else solid_in(ly, t))
+                fr.alpha_composite(pulse(pulse(solid_in(ly, t), t - tb), t - tb3) if last else solid_in(ly, t))
             if layers:
                 underline(fr, layers[-1], t - tb - 0.1, yellow)
             self.put(wr, fr.convert("RGB"))
@@ -449,7 +451,7 @@ class ScreenReel:
         t_mark = max(t_cap + 0.3, dur * 0.62)
         for k in range(total):
             t = k / FPS
-            fr = bg.convert("RGBA")
+            fr = Image.new("RGBA", (W, H), (0, 0, 0, 0))  # 文字と印だけの層（あとで背景に重ねる）
             for i, ly in enumerate(lines):
                 ti = t - t_line - max(0, i - 1) * 0.15
                 if i == 0:
@@ -466,7 +468,15 @@ class ScreenReel:
                 hh = 120
                 bx, by = W // 2 - 43, mark_y + 30 - int(30 * bounce)
                 ns._bookmark(d, bx, by, hh, (255, 255, 255))
-            self.put(wr, fr.convert("RGB"))
+            # 出そろったあとも止まって見えないよう、文字のまとまりにゆっくり寄り続ける（幅からはみ出さない 5% まで）
+            z = 1.0 + 0.05 * (k / max(1, total - 1))
+            if z > 1.001:
+                w2, h2 = int(W / z), int(H / z)
+                x0, y0 = (W - w2) // 2, int((H - h2) * 0.45)
+                fr = fr.crop((x0, y0, x0 + w2, y0 + h2)).resize((W, H), Image.BILINEAR)
+            out = bg.convert("RGBA")
+            out.alpha_composite(fr)
+            self.put(wr, out.convert("RGB"))
 
 
     def end_ask(self, wr: Writer, sc: dict) -> None:
