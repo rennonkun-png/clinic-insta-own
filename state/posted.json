@@ -331,6 +331,26 @@
       "followers_at_post": 100,
       "posted_at": "2026-11-17T19:04+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-18",
+      "id": "generated:x1117-3",
+      "category": "webmarketing",
+      "title": "届いた口コミ、スタッフは読んでいますか",
+      "format": "reel",
+      "hook": "question",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18100891106410437",
+      "permalink": "https://www.instagram.com/reel/Df3EdsTOFlR/",
+      "followers_at_post": 100,
+      "posted_at": "2026-11-18T08:05+09:00",
+      "slot": true
     }
   ]
 }
