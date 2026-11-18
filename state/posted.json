@@ -371,6 +371,26 @@
       "followers_at_post": 100,
       "posted_at": "2026-11-18T13:04+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-18",
+      "id": "generated:x1117-5",
+      "category": "webmarketing",
+      "title": "混む曜日と時間は、HPに書いて選んでもらう",
+      "format": "reel",
+      "hook": "howto",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18164644285499318",
+      "permalink": "https://www.instagram.com/reel/Df4Wv_Bhprq/",
+      "followers_at_post": 100,
+      "posted_at": "2026-11-18T20:04+09:00",
+      "slot": true
     }
   ]
 }
