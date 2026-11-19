@@ -391,6 +391,26 @@
       "followers_at_post": 100,
       "posted_at": "2026-11-18T20:04+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-19",
+      "id": "generated:x1117-6",
+      "category": "webmarketing",
+      "title": "「Googleの者です」という電話、本物かを見分ける",
+      "format": "reel",
+      "hook": "warning",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18122326258974239",
+      "permalink": "https://www.instagram.com/reel/Df5v949sU0C/",
+      "followers_at_post": 100,
+      "posted_at": "2026-11-19T09:04+09:00",
+      "slot": true
     }
   ]
 }
