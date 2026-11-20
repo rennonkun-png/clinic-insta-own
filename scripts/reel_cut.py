@@ -442,9 +442,14 @@ class CutReel:
                 st, bd = sched[j]
                 tb = t - st
                 ly = solid_in(layers[j], tb) if (first and j == 0) else rs._pop(layers[j], tb + 0.07, 0.26)
-                if j in alts and tb >= bd / 2:  # 長く出る句は、半ばで色を入れ替えて下線を引く
-                    ly = rs._pop(alts[j], tb - bd / 2 + 0.07, 0.26)
-                    underline(fr, alts[j], tb - bd / 2, self.yellow)
+                if j in alts:  # 長く出る句は、1.7秒以内ごとに強調の色を入れ替える（同じ字のまま2秒止めない）
+                    nseg = int(bd / 1.7) + 1
+                    seg = min(nseg - 1, int(tb / (bd / nseg)))
+                    if seg > 0:
+                        t_in = tb - seg * bd / nseg
+                        ly = rs._pop(alts[j] if seg % 2 else layers[j], t_in + 0.07, 0.26)
+                        if seg % 2:
+                            underline(fr, alts[j], t_in, self.yellow)
                 self.comp(fr, ly)
             wr.put(fr)
         # 場面が終わった時点の状態を残す
