@@ -451,6 +451,26 @@
       "followers_at_post": 101,
       "posted_at": "2026-11-20T07:03+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-20",
+      "id": "generated:x1117-9",
+      "category": "webmarketing",
+      "title": "求人に「見学できます」と書いて、応募の前に会う",
+      "format": "reel",
+      "hook": "question",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "17957822727314955",
+      "permalink": "https://www.instagram.com/reel/Df8pfnqAeUL/",
+      "followers_at_post": 101,
+      "posted_at": "2026-11-20T12:05+09:00",
+      "slot": true
     }
   ]
 }
