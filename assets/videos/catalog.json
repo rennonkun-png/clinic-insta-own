@@ -1,0 +1,12 @@
+{
+ "_help": "Pexels の動画（720x1280・6秒・音なしに縮めたもの）。used は使った投稿。同じ動画は2度使わない",
+ "used": {
+  "assets/videos/pexels-v-7317427.mp4": "x1120-9",
+  "assets/videos/pexels-v-6278834.mp4": "x1120-9",
+  "assets/videos/pexels-v-20413409.mp4": "x1120-9",
+  "assets/videos/pexels-v-5356843.mp4": "x1120-3",
+  "assets/videos/pexels-v-6611954.mp4": "x1120-3",
+  "assets/videos/pexels-v-38903358.mp4": "x1120-3"
+ },
+ "rejected": []
+}

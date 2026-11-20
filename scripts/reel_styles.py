@@ -6,6 +6,7 @@
           比較やチェックは写真の上にカードで出す
 
 投稿データの "reel_style"（screen / telop / photo）で切り替える。
+list / split / myth（冒頭の1コマ目から形を見せる型）は reel_cut.py が描く。
 """
 from __future__ import annotations
 
@@ -619,6 +620,9 @@ class PhotoStory(Base):
 
 def render_reel(cfg: dict, post: dict, out_path: Path) -> Path:
     """投稿の reel_style に合わせてリールを作る。"""
+    import reel_cut
+    if reel_cut.uses(post):  # 冒頭から形を見せる型（list / split / myth）。reel に open がある投稿だけ
+        return reel_cut.render_cut_reel(cfg, post, out_path)
     style = post.get("reel_style") or ("screen" if post.get("reel") else "telop")
     if style == "screen" and post.get("reel"):
         return rs.render_screen_reel(cfg, post, out_path)
