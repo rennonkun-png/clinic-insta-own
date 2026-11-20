@@ -471,6 +471,26 @@
       "followers_at_post": 101,
       "posted_at": "2026-11-20T12:05+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-20",
+      "id": "generated:x1120-1",
+      "category": "webmarketing",
+      "title": "診療中に出られなかった電話、かけ直す時刻を決める",
+      "format": "reel",
+      "hook": "question",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "17905783329607929",
+      "permalink": "https://www.instagram.com/reel/Df9ZhGrBm0U/",
+      "followers_at_post": 101,
+      "posted_at": "2026-11-20T19:05+09:00",
+      "slot": true
     }
   ]
 }
