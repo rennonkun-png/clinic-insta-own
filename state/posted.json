@@ -531,6 +531,26 @@
       "followers_at_post": 101,
       "posted_at": "2026-11-21T13:05+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-21",
+      "id": "generated:x1120-2",
+      "category": "webmarketing",
+      "title": "HPの「保険証をお持ちください」、いまの書き方に直す",
+      "format": "reel",
+      "hook": "warning",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18109884766976023",
+      "permalink": "https://www.instagram.com/reel/DgAFHWrqj5C/",
+      "followers_at_post": 101,
+      "posted_at": "2026-11-21T20:04+09:00",
+      "slot": true
     }
   ]
 }
