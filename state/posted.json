@@ -511,6 +511,26 @@
       "followers_at_post": 101,
       "posted_at": "2026-11-21T08:05+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-21",
+      "id": "generated:x1120-3",
+      "category": "webmarketing",
+      "title": "担当医の表はHPに載せて、代診の日も同じ場所に書く",
+      "format": "reel",
+      "hook": "story",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18397926520161430",
+      "permalink": "https://www.instagram.com/reel/Df_VHVNhxFh/",
+      "followers_at_post": 101,
+      "posted_at": "2026-11-21T13:05+09:00",
+      "slot": true
     }
   ]
 }
