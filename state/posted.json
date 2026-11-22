@@ -591,6 +591,26 @@
       "followers_at_post": 101,
       "posted_at": "2026-11-22T14:04+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-22",
+      "id": "generated:x1120-5",
+      "category": "webmarketing",
+      "title": "年末年始の休診、マップは連続6日までと7日以上で設定が違う",
+      "format": "reel",
+      "hook": "number",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "17920027110262133",
+      "permalink": "https://www.instagram.com/reel/DgCws6KhIMd/",
+      "followers_at_post": 101,
+      "posted_at": "2026-11-22T21:04+09:00",
+      "slot": true
     }
   ]
 }
