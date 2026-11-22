@@ -571,6 +571,26 @@
       "followers_at_post": 101,
       "posted_at": "2026-11-22T09:03+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-22",
+      "id": "generated:x1120-4",
+      "category": "webmarketing",
+      "title": "厚生労働省の「ナビイ」に載っている自院の情報を見る",
+      "format": "reel",
+      "hook": "howto",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "17896834371433310",
+      "permalink": "https://www.instagram.com/reel/DgCAugSg6_t/",
+      "followers_at_post": 101,
+      "posted_at": "2026-11-22T14:04+09:00",
+      "slot": true
     }
   ]
 }
