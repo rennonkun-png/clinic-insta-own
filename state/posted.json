@@ -551,6 +551,26 @@
       "followers_at_post": 101,
       "posted_at": "2026-11-21T20:04+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-22",
+      "id": "generated:x1120-8",
+      "category": "webmarketing",
+      "title": "求人票の「変更の範囲」、2024年4月から書く項目です",
+      "format": "reel",
+      "hook": "number",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18381013447240890",
+      "permalink": "https://www.instagram.com/reel/DgBeSFovG6J/",
+      "followers_at_post": 101,
+      "posted_at": "2026-11-22T09:03+09:00",
+      "slot": true
     }
   ]
 }
