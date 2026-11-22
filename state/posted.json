@@ -611,6 +611,26 @@
       "followers_at_post": 101,
       "posted_at": "2026-11-22T21:04+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-23",
+      "id": "generated:x1120-7",
+      "category": "webmarketing",
+      "title": "施設基準などの院内掲示、HPにも載せていますか",
+      "format": "reel",
+      "hook": "howto",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18104765078532243",
+      "permalink": "https://www.instagram.com/reel/DgD1XFvJiLk/",
+      "followers_at_post": 103,
+      "posted_at": "2026-11-23T07:03+09:00",
+      "slot": true
     }
   ]
 }
