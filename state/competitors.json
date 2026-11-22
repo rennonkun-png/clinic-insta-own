@@ -919,5 +919,725 @@
     }
    ]
   }
+ ],
+ "2026-11-23": [
+  {
+   "username": "core_nakamatsuo",
+   "name": "歯科開業アドバイザー/自費8割経営",
+   "followers": 6686,
+   "media_count": 631,
+   "posts_per_week": 2.0,
+   "avg_likes": 122.4,
+   "avg_comments": 0.8,
+   "engagement_rate": 1.84,
+   "reel_share": 0,
+   "carousel_share": 100,
+   "top_hours_jst": [
+    6,
+    7
+   ],
+   "top_posts": [
+    {
+     "permalink": "https://www.instagram.com/p/DcPRsyPAVwy/",
+     "likes": 176,
+     "comments": 2,
+     "type": "FEED",
+     "caption": "歯科界ではこれまで"
+    },
+    {
+     "permalink": "https://www.instagram.com/p/DdzmCtXgVwc/",
+     "likes": 158,
+     "comments": 6,
+     "type": "FEED",
+     "caption": "約15年前、私はとにかく「レセプトの出る物件」を追いかけていました。"
+    },
+    {
+     "permalink": "https://www.instagram.com/p/Ddhlef_E0W2/",
+     "likes": 162,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "歯科開業って面白いなと思うことがあります。"
+    }
+   ]
+  },
+  {
+   "username": "medicalclinicdesign",
+   "name": "medical-clinic-design",
+   "followers": 3696,
+   "media_count": 180,
+   "posts_per_week": 4.7,
+   "avg_likes": 46.6,
+   "avg_comments": 0.1,
+   "engagement_rate": 1.26,
+   "reel_share": 43,
+   "carousel_share": 57,
+   "top_hours_jst": [
+    20,
+    16
+   ],
+   "top_posts": [
+    {
+     "permalink": "https://www.instagram.com/p/DejYEbaFacq/",
+     "likes": 95,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "「300」とコメントでLOOK BOOKプレゼント✨"
+    },
+    {
+     "permalink": "https://www.instagram.com/p/DerGcg6CcnQ/",
+     "likes": 82,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "「300」とコメントでLOOK BOOKプレゼント✨"
+    },
+    {
+     "permalink": "https://www.instagram.com/p/DeZE7TvlZQQ/",
+     "likes": 79,
+     "comments": 1,
+     "type": "FEED",
+     "caption": "感染対策も、居心地も。受付と待合の実例3選"
+    }
+   ]
+  },
+  {
+   "username": "etanaconsul",
+   "name": "中川鉄矢｜美容クリニック経営のプロ",
+   "followers": 985,
+   "media_count": 177,
+   "posts_per_week": 1.6,
+   "avg_likes": 14.5,
+   "avg_comments": 0.5,
+   "engagement_rate": 1.52,
+   "reel_share": 100,
+   "carousel_share": 0,
+   "top_hours_jst": [
+    19,
+    20,
+    18
+   ],
+   "top_posts": [
+    {
+     "permalink": "https://www.instagram.com/reel/Dbc_RHwS6EU/",
+     "likes": 86,
+     "comments": 9,
+     "type": "REELS",
+     "caption": "今の時代、先生たちも有名な方が多いですね👀"
+    },
+    {
+     "permalink": "https://www.instagram.com/reel/DdtVChvSze0/",
+     "likes": 77,
+     "comments": 2,
+     "type": "REELS",
+     "caption": "皆さんはどう思いますか？"
+    },
+    {
+     "permalink": "https://www.instagram.com/reel/DbvWdjPSCQu/",
+     "likes": 34,
+     "comments": 0,
+     "type": "REELS",
+     "caption": "看護師にも実は複数資格があるんです👀"
+    }
+   ]
+  },
+  {
+   "username": "saori__sns",
+   "name": "さおり｜１分で学べる店舗の経営戦略｜中小企業診断士",
+   "followers": 1573,
+   "media_count": 191,
+   "posts_per_week": 0.9,
+   "avg_likes": 11.9,
+   "avg_comments": 0.2,
+   "engagement_rate": 0.77,
+   "reel_share": 63,
+   "carousel_share": 37,
+   "top_hours_jst": [
+    21,
+    20,
+    19
+   ],
+   "top_posts": [
+    {
+     "permalink": "https://www.instagram.com/p/DWoOTsxgUWG/",
+     "likes": 52,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "クリニック運用は“設計が9割！”アカウントの作り方"
+    },
+    {
+     "permalink": "https://www.instagram.com/p/DW3rH2ugXJG/",
+     "likes": 27,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "今日からできる！ファン化ストーリーズ運用のコツ5選"
+    },
+    {
+     "permalink": "https://www.instagram.com/reel/DdL4hmdh7B3/",
+     "likes": 24,
+     "comments": 2,
+     "type": "REELS",
+     "caption": "売上はあるのに、"
+    }
+   ]
+  },
+  {
+   "username": "trcgp_for_doctors",
+   "name": "テラスグループ",
+   "followers": 1343,
+   "media_count": 105,
+   "posts_per_week": 0.9,
+   "avg_likes": 9.3,
+   "avg_comments": 0.0,
+   "engagement_rate": 0.69,
+   "reel_share": 17,
+   "carousel_share": 83,
+   "top_hours_jst": [
+    11,
+    12,
+    13
+   ],
+   "top_posts": [
+    {
+     "permalink": "https://www.instagram.com/p/DYvsausic-s/",
+     "likes": 25,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "🔥潰れそうなクリニックの特徴とは？"
+    },
+    {
+     "permalink": "https://www.instagram.com/p/DXN0fhOiT3c/",
+     "likes": 16,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "💡ペイハラ対策10"
+    },
+    {
+     "permalink": "https://www.instagram.com/p/DWVIIsJCdV6/",
+     "likes": 16,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "🤔問題スタッフ…どう辞めてもらう？"
+    }
+   ]
+  },
+  {
+   "username": "lets_nns",
+   "name": "日本医業総研 │ クリニック開業・クリニック承継",
+   "followers": 1873,
+   "media_count": 652,
+   "posts_per_week": 1.4,
+   "avg_likes": 10.3,
+   "avg_comments": 0.0,
+   "engagement_rate": 0.55,
+   "reel_share": 13,
+   "carousel_share": 87,
+   "top_hours_jst": [
+    20,
+    17,
+    19
+   ],
+   "top_posts": [
+    {
+     "permalink": "https://www.instagram.com/p/Dam7Tjrj9on/",
+     "likes": 20,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "開業を考え始めた勤務医の先生へ🏥"
+    },
+    {
+     "permalink": "https://www.instagram.com/p/Da483_Mj0A8/",
+     "likes": 17,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "開業を考え始めた勤務医の先生へ🏥"
+    },
+    {
+     "permalink": "https://www.instagram.com/p/DZ68B8ej97S/",
+     "likes": 15,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "開業を考え始めた勤務医の先生へ🏥"
+    }
+   ]
+  },
+  {
+   "username": "aiko_nenne.soudan",
+   "name": "aiko|医療福祉・ひとり事業の広報PR／インスタ運用支援｜石川県金沢市",
+   "followers": 3516,
+   "media_count": 872,
+   "posts_per_week": 2.2,
+   "avg_likes": 14.1,
+   "avg_comments": 0.4,
+   "engagement_rate": 0.41,
+   "reel_share": 33,
+   "carousel_share": 63,
+   "top_hours_jst": [
+    17,
+    12,
+    6
+   ],
+   "top_posts": [
+    {
+     "permalink": "https://www.instagram.com/p/DdVzr4kk5Ct/",
+     "likes": 39,
+     "comments": 5,
+     "type": "FEED",
+     "caption": "金沢市窪に新しい子育てスポットがオープンしました✨コーヒーが飲める子育て広場☕️「Baby & Days」に、プレオープ"
+    },
+    {
+     "permalink": "https://www.instagram.com/p/Dc26G-0kyP_/",
+     "likes": 32,
+     "comments": 2,
+     "type": "FEED",
+     "caption": "いま、「子どもの眠る権利」を社会に問う～『子どもの眠る権利を守る全国協議会』設立記念シンポジウムに参加するため、8月最後"
+    },
+    {
+     "permalink": "https://www.instagram.com/p/DcS5sktk91I/",
+     "likes": 32,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "＜医療機関のインスタ投稿前チェックガイド＞配布中🗒💡"
+    }
+   ]
+  },
+  {
+   "username": "nao.nao.yobotto",
+   "name": "ほしか｜予防型歯科×経営サポート🦷",
+   "followers": 2740,
+   "media_count": 386,
+   "posts_per_week": 3.2,
+   "avg_likes": 11.2,
+   "avg_comments": 0.0,
+   "engagement_rate": 0.41,
+   "reel_share": 33,
+   "carousel_share": 67,
+   "top_hours_jst": [
+    20,
+    19,
+    16
+   ],
+   "top_posts": [
+    {
+     "permalink": "https://www.instagram.com/p/Dd_W3ICFGJr/",
+     "likes": 50,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "nao.nao.yobotto←他の投稿はコチラから"
+    },
+    {
+     "permalink": "https://www.instagram.com/reel/DeoQJTwplxK/",
+     "likes": 32,
+     "comments": 0,
+     "type": "REELS",
+     "caption": "患者さんが来なくなるのは、治療への不満だけが原因ではありません。"
+    },
+    {
+     "permalink": "https://www.instagram.com/p/DdtS2IrlGy3/",
+     "likes": 26,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "nao.nao.yobotto←他の投稿はコチラから"
+    }
+   ]
+  },
+  {
+   "username": "groovetokyo.inc",
+   "name": "歯科クリニック運営をフルサポート/ (株)GROOVE TOKYO",
+   "followers": 337,
+   "media_count": 126,
+   "posts_per_week": 0.7,
+   "avg_likes": 11.7,
+   "avg_comments": 0.1,
+   "engagement_rate": 3.48,
+   "reel_share": 63,
+   "carousel_share": 37,
+   "top_hours_jst": [
+    19,
+    18,
+    20
+   ],
+   "top_posts": [
+    {
+     "permalink": "https://www.instagram.com/reel/DXOojqCB_kb/",
+     "likes": 26,
+     "comments": 0,
+     "type": "REELS",
+     "caption": "【開催報告】歯科スタッフ向け接遇セミナー🧑‍🏫"
+    },
+    {
+     "permalink": "https://www.instagram.com/p/DYWu1luoGec/",
+     "likes": 24,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "＼GROOVE TOKYOの開業サポートサービス✨／"
+    },
+    {
+     "permalink": "https://www.instagram.com/reel/Dbc_9zPB9xi/",
+     "likes": 23,
+     "comments": 0,
+     "type": "REELS",
+     "caption": "＼📢 歯科スタッフ教育セミナー料金改定のお知らせ✨／"
+    }
+   ]
+  },
+  {
+   "username": "shikahiroba_com",
+   "name": "歯科広場.com | 将来の医院開業に1UP",
+   "followers": 298,
+   "media_count": 38,
+   "posts_per_week": 0.3,
+   "avg_likes": 3.2,
+   "avg_comments": 0.0,
+   "engagement_rate": 1.09,
+   "reel_share": 0,
+   "carousel_share": 97,
+   "top_hours_jst": [
+    19,
+    20,
+    15
+   ],
+   "top_posts": [
+    {
+     "permalink": "https://www.instagram.com/p/DMiHWNcTJnP/",
+     "likes": 9,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "「歯科医院開業のリアル」を発信中！"
+    },
+    {
+     "permalink": "https://www.instagram.com/p/DMJ-0-hxI85/",
+     "likes": 8,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "「歯科医院開業のリアル」を発信中！"
+    },
+    {
+     "permalink": "https://www.instagram.com/p/DK87H4aR-St/",
+     "likes": 8,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "📣【完全無料】歯科開業を考える歯科医師へ📣"
+    }
+   ]
+  },
+  {
+   "username": "kenjiueda12",
+   "name": "開業支援のプロ｜上田健二（武蔵野メディカル）",
+   "followers": 3691,
+   "media_count": 1714,
+   "posts_per_week": 18.6,
+   "avg_likes": 4.1,
+   "avg_comments": 0.0,
+   "engagement_rate": 0.11,
+   "reel_share": 70,
+   "carousel_share": 0,
+   "top_hours_jst": [
+    14,
+    21,
+    18
+   ],
+   "top_posts": [
+    {
+     "permalink": "https://www.instagram.com/reel/Df4dgkrnH2O/",
+     "likes": 8,
+     "comments": 0,
+     "type": "REELS",
+     "caption": "これから整骨院を開業するなら、どんな規模・設備で始める？"
+    },
+    {
+     "permalink": "https://www.instagram.com/reel/Df9nNteEZ7K/",
+     "likes": 7,
+     "comments": 0,
+     "type": "REELS",
+     "caption": "整骨整体院開業で成功するために、取り組みたいこと。"
+    },
+    {
+     "permalink": "https://www.instagram.com/reel/DfoQg0DlJ6X/",
+     "likes": 6,
+     "comments": 0,
+     "type": "REELS",
+     "caption": "まさか、文◯砲？！「上田さん、わたし本当に許せません」"
+    }
+   ]
+  },
+  {
+   "username": "medical.assets",
+   "name": "税理士法人辻総合会計【公式】",
+   "followers": 91,
+   "media_count": 52,
+   "posts_per_week": 0.3,
+   "avg_likes": 4.1,
+   "avg_comments": 0.0,
+   "engagement_rate": 4.54,
+   "reel_share": 47,
+   "carousel_share": 17,
+   "top_hours_jst": [
+    18,
+    16,
+    17
+   ],
+   "top_posts": [
+    {
+     "permalink": "https://www.instagram.com/reel/DH8Ffc6xq_N/",
+     "likes": 10,
+     "comments": 0,
+     "type": "REELS",
+     "caption": "＼＼淀屋橋オフィスまでの道案内🚶／／"
+    },
+    {
+     "permalink": "https://www.instagram.com/reel/DFmoa8PRJwv/",
+     "likes": 10,
+     "comments": 0,
+     "type": "REELS",
+     "caption": "＼＼💼Daily routine 外回り ver. 👠／／"
+    },
+    {
+     "permalink": "https://www.instagram.com/p/DH-D0-UhjhM/",
+     "likes": 8,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "＼＼✨健康経営優良法人✨の認定を取得しました！！／／"
+    }
+   ]
+  },
+  {
+   "username": "dental_alphazeal",
+   "name": "歯科開業 内覧会アルファージール",
+   "followers": 487,
+   "media_count": 229,
+   "posts_per_week": 0.8,
+   "avg_likes": 2.9,
+   "avg_comments": 0.1,
+   "engagement_rate": 0.62,
+   "reel_share": 0,
+   "carousel_share": 3,
+   "top_hours_jst": [
+    13,
+    17,
+    7
+   ],
+   "top_posts": [
+    {
+     "permalink": "https://www.instagram.com/p/DXYezF8AE8c/",
+     "likes": 13,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "いつも大変お世話になっている尊敬すべき歯科医であり経営者の石幡先生！　"
+    },
+    {
+     "permalink": "https://www.instagram.com/p/DXLnnohAP1j/",
+     "likes": 12,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "今日は浦和美園の「かいじゅう歯科」さんにご訪問させて頂きました！"
+    },
+    {
+     "permalink": "https://www.instagram.com/p/DYG2CRcgOkQ/",
+     "likes": 5,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "代々木からウォーキング🚶‍♀️がてら山手通りを歩いてると、やはり目に止まるのは「歯医者さん」。"
+    }
+   ]
+  },
+  {
+   "username": "gc_recruiting",
+   "name": "ゴリラクリニック採用担当【公式】",
+   "followers": 368,
+   "media_count": 185,
+   "posts_per_week": 0.7,
+   "avg_likes": 4.2,
+   "avg_comments": 0.1,
+   "engagement_rate": 1.18,
+   "reel_share": 3,
+   "carousel_share": 87,
+   "top_hours_jst": [
+    19,
+    20,
+    18
+   ],
+   "top_posts": [
+    {
+     "permalink": "https://www.instagram.com/p/DUk71kREklH/",
+     "likes": 9,
+     "comments": 1,
+     "type": "FEED",
+     "caption": "【ゴリラクリニックの仕事がついている人】"
+    },
+    {
+     "permalink": "https://www.instagram.com/p/DUQNZ22EUIb/",
+     "likes": 8,
+     "comments": 1,
+     "type": "FEED",
+     "caption": "【美容看護師が行う追加のご提案とは？】"
+    },
+    {
+     "permalink": "https://www.instagram.com/p/DUImH-7knyy/",
+     "likes": 9,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "【美容看護師に聞く、自ら行動にうつす大切さ】"
+    }
+   ]
+  },
+  {
+   "username": "dio_recruit_info",
+   "name": "ディオクリニック採用【公式】",
+   "followers": 559,
+   "media_count": 35,
+   "posts_per_week": 0.2,
+   "avg_likes": 24.4,
+   "avg_comments": 0.0,
+   "engagement_rate": 4.36,
+   "reel_share": 3,
+   "carousel_share": 83,
+   "top_hours_jst": [
+    10,
+    11,
+    16
+   ],
+   "top_posts": [
+    {
+     "permalink": "https://www.instagram.com/reel/C207NADuLSS/",
+     "likes": 52,
+     "comments": 0,
+     "type": "REELS",
+     "caption": "ディオクリニック新卒採用アカウントです☺"
+    },
+    {
+     "permalink": "https://www.instagram.com/p/C2_PTgVhoPi/",
+     "likes": 48,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "ディオクリニック新卒採用アカウントです☺"
+    },
+    {
+     "permalink": "https://www.instagram.com/p/Cy2Jf49h6D4/",
+     "likes": 43,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "ディオクリニック新卒採用アカウントです😊"
+    }
+   ]
+  },
+  {
+   "username": "hirahiga_orthopedic_hospital",
+   "name": "枚方東整形外科病院",
+   "followers": 1487,
+   "media_count": 335,
+   "posts_per_week": 2.5,
+   "avg_likes": 68.9,
+   "avg_comments": 3.8,
+   "engagement_rate": 4.89,
+   "reel_share": 77,
+   "carousel_share": 17,
+   "top_hours_jst": [
+    18,
+    20,
+    17
+   ],
+   "top_posts": [
+    {
+     "permalink": "https://www.instagram.com/reel/DetdgzhRjB3/",
+     "likes": 532,
+     "comments": 54,
+     "type": "REELS",
+     "caption": "."
+    },
+    {
+     "permalink": "https://www.instagram.com/reel/DdyPTxQzez_/",
+     "likes": 449,
+     "comments": 15,
+     "type": "REELS",
+     "caption": "."
+    },
+    {
+     "permalink": "https://www.instagram.com/reel/DfHNfaoRqWm/",
+     "likes": 185,
+     "comments": 4,
+     "type": "REELS",
+     "caption": "."
+    }
+   ]
+  },
+  {
+   "username": "toru_omodani",
+   "name": "面谷 透　スポーツ整形外科医",
+   "followers": 4383,
+   "media_count": 284,
+   "posts_per_week": 3.6,
+   "avg_likes": 80.9,
+   "avg_comments": 0.3,
+   "engagement_rate": 1.85,
+   "reel_share": 43,
+   "carousel_share": 43,
+   "top_hours_jst": [
+    18,
+    19,
+    21
+   ],
+   "top_posts": [
+    {
+     "permalink": "https://www.instagram.com/reel/DejRNSnm_7g/",
+     "likes": 159,
+     "comments": 3,
+     "type": "REELS",
+     "caption": "肩鎖関節炎になった整形外科医が、自分で試して一番効いた治し方を動画でお話しました。"
+    },
+    {
+     "permalink": "https://www.instagram.com/reel/Dex-CgVpgmk/",
+     "likes": 155,
+     "comments": 1,
+     "type": "REELS",
+     "caption": "筋トレで痛めた自分の肩にエコーを見ながら注射を行いました。"
+    },
+    {
+     "permalink": "https://www.instagram.com/p/DfGay56khuO/",
+     "likes": 137,
+     "comments": 1,
+     "type": "FEED",
+     "caption": "福岡で開催された日本足の外科学会にて、足の外科領域におけるPRP療法についてお話させていただきました。"
+    }
+   ]
+  },
+  {
+   "username": "clinicsophia",
+   "name": "自由が丘クリニックソフィア|形成外科・美容外科・美容皮膚科",
+   "followers": 1845,
+   "media_count": 630,
+   "posts_per_week": 2.7,
+   "avg_likes": 18.2,
+   "avg_comments": 0.0,
+   "engagement_rate": 0.99,
+   "reel_share": 13,
+   "carousel_share": 87,
+   "top_hours_jst": [
+    20,
+    21,
+    12
+   ],
+   "top_posts": [
+    {
+     "permalink": "https://www.instagram.com/p/DdtTbaODee6/",
+     "likes": 31,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "＼皮膚科専門医によるニキビ外来でニキビのお悩みを解決しませんか？／"
+    },
+    {
+     "permalink": "https://www.instagram.com/p/DfW-2HOAsQD/",
+     "likes": 22,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "＼乾燥肌の原因って？╱"
+    },
+    {
+     "permalink": "https://www.instagram.com/p/DfOWE2djYxK/",
+     "likes": 22,
+     "comments": 0,
+     "type": "FEED",
+     "caption": "▼11月のご優待メニュー▼"
+    }
+   ]
+  }
  ]
 }
