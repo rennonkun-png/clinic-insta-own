@@ -631,6 +631,26 @@
       "followers_at_post": 103,
       "posted_at": "2026-11-23T07:03+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-23",
+      "id": "generated:x1122-10",
+      "category": "webmarketing",
+      "title": "「著作権の警告」のDM、押す前に本物か確かめる",
+      "format": "reel",
+      "hook": "warning",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18076337102769187",
+      "permalink": "https://www.instagram.com/reel/DgEXnlePERL/",
+      "followers_at_post": 103,
+      "posted_at": "2026-11-23T12:03+09:00",
+      "slot": true
     }
   ]
 }
