@@ -671,6 +671,26 @@
       "followers_at_post": 103,
       "posted_at": "2026-11-23T19:04+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-24",
+      "id": "generated:x1122-2",
+      "category": "webmarketing",
+      "title": "検索結果の青い題、「トップページ」だけになっていませんか",
+      "format": "reel",
+      "hook": "question",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18234260464331014",
+      "permalink": "https://www.instagram.com/reel/DgGhDMQIHph/",
+      "followers_at_post": 103,
+      "posted_at": "2026-11-24T08:04+09:00",
+      "slot": true
     }
   ]
 }
