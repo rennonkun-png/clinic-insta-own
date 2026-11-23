@@ -1,12 +1,37 @@
 {
-  "weights": {},
+  "weights": {
+    "category": {
+      "webmarketing": 1.0
+    },
+    "format": {
+      "reel": 1.133,
+      "carousel": 0.75,
+      "image": 1.0
+    },
+    "hook": {
+      "question": 1.031,
+      "number": 0.833,
+      "story": 1.5,
+      "warning": 0.8,
+      "howto": 0.75,
+      "myth": 1.0
+    },
+    "service_post": {
+      "yes": 1.0
+    }
+  },
   "retired": [],
-  "updated": "2026-11-16T01:29:14.062640+00:00",
+  "updated": "2026-11-23T02:05:29.463918+00:00",
   "follower_history": [
     {
       "date": "2026-11-16",
       "followers": 100,
       "media": 15
+    },
+    {
+      "date": "2026-11-23",
+      "followers": 103,
+      "media": 33
     }
   ]
 }

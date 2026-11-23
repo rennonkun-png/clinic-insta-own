@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-16T01:29:14.062658+00:00",
+  "generated_at": "2026-11-23T02:05:29.463967+00:00",
   "clinic_name": "株式会社GENOVA",
   "goals": [
     "reach",
@@ -7,35 +7,209 @@
     "followers",
     "acquisition"
   ],
-  "analyzed_posts": 1,
-  "mean_score": 0.4,
+  "analyzed_posts": 23,
+  "mean_score": 5.12,
   "top": [
     {
-      "date": "2026-11-13",
-      "title": "クリニックのInstagram、何を投稿すればいい？",
+      "date": "2026-11-16",
+      "title": "広告で来た人が、HPをすぐ閉じる理由",
+      "category": "webmarketing",
+      "format": "reel",
+      "hook": "story",
+      "service": "web_consulting",
+      "score": 33.53,
+      "reach": 2,
+      "saved": 0,
+      "likes": 1,
+      "comments": 0,
+      "shares": 0,
+      "views": 3,
+      "permalink": "https://www.instagram.com/reel/DfzIWMdMOQn/"
+    },
+    {
+      "date": "2026-11-20",
+      "title": "診療中に出られなかった電話、かけ直す時刻を決める",
       "category": "webmarketing",
       "format": "reel",
       "hook": "question",
       "service": "web_consulting",
-      "score": 0.4,
-      "reach": 4,
+      "score": 12.57,
+      "reach": 127,
+      "saved": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": 132,
+      "permalink": "https://www.instagram.com/reel/Df9ZhGrBm0U/"
+    },
+    {
+      "date": "2026-11-21",
+      "title": "担当医の表はHPに載せて、代診の日も同じ場所に書く",
+      "category": "webmarketing",
+      "format": "reel",
+      "hook": "story",
+      "service": "web_consulting",
+      "score": 11.68,
+      "reach": 118,
+      "saved": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": 128,
+      "permalink": "https://www.instagram.com/reel/Df_VHVNhxFh/"
+    },
+    {
+      "date": "2026-11-17",
+      "title": "診療時間の「19時まで」、受付の締め切りも書く",
+      "category": "webmarketing",
+      "format": "reel",
+      "hook": "question",
+      "service": "web_consulting",
+      "score": 11.5,
+      "reach": 115,
+      "saved": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": 125,
+      "permalink": "https://www.instagram.com/reel/Df1q_sUOvCG/"
+    },
+    {
+      "date": "2026-11-21",
+      "title": "HPの「保険証をお持ちください」、いまの書き方に直す",
+      "category": "webmarketing",
+      "format": "reel",
+      "hook": "warning",
+      "service": "web_consulting",
+      "score": 10.79,
+      "reach": 109,
+      "saved": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": 116,
+      "permalink": "https://www.instagram.com/reel/DgAFHWrqj5C/"
+    }
+  ],
+  "bottom": [
+    {
+      "date": "2026-11-15",
+      "title": "広告を足す前に、見つかったあとの3か所を直す",
+      "category": "webmarketing",
+      "format": "image",
+      "hook": "myth",
+      "service": "web_consulting",
+      "score": 0.2,
+      "reach": 2,
+      "saved": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": 8,
+      "permalink": "https://www.instagram.com/p/DfvMq-bGsDk/"
+    },
+    {
+      "date": "2026-11-15",
+      "title": "PageSpeed Insights、点数と秒数を見る",
+      "category": "webmarketing",
+      "format": "carousel",
+      "hook": "number",
+      "service": "web_consulting",
+      "score": 0.2,
+      "reach": 2,
       "saved": 0,
       "likes": 0,
       "comments": 0,
       "shares": 0,
       "views": 5,
-      "permalink": "https://www.instagram.com/reel/Dfrg2PpB7tM/"
+      "permalink": "https://www.instagram.com/p/DfvL-MZF6Lp/"
+    },
+    {
+      "date": "2026-11-15",
+      "title": "何も言わずに閉じられやすい、HPの5つの特徴",
+      "category": "webmarketing",
+      "format": "carousel",
+      "hook": "warning",
+      "service": "web_consulting",
+      "score": 0.2,
+      "reach": 2,
+      "saved": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": 6,
+      "permalink": "https://www.instagram.com/p/DfvJ_4Sms6t/"
+    },
+    {
+      "date": "2026-11-15",
+      "title": "「HPは業者に任せてるから」のあとに、よく起きること",
+      "category": "webmarketing",
+      "format": "carousel",
+      "hook": "story",
+      "service": "web_consulting",
+      "score": 0.2,
+      "reach": 2,
+      "saved": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": 3,
+      "permalink": "https://www.instagram.com/p/DfvIsVLGh9M/"
+    },
+    {
+      "date": "2026-11-15",
+      "title": "月に1回、Googleで自院名を検索して見るチェック表",
+      "category": "webmarketing",
+      "format": "carousel",
+      "hook": "howto",
+      "service": "web_consulting",
+      "score": 0.3,
+      "reach": 3,
+      "saved": 0,
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "views": 6,
+      "permalink": "https://www.instagram.com/p/DfvKRXJFy4i/"
     }
   ],
-  "bottom": [],
-  "weights": {},
+  "weights": {
+    "category": {
+      "webmarketing": 1.0
+    },
+    "format": {
+      "reel": 1.133,
+      "carousel": 0.75,
+      "image": 1.0
+    },
+    "hook": {
+      "question": 1.031,
+      "number": 0.833,
+      "story": 1.5,
+      "warning": 0.8,
+      "howto": 0.75,
+      "myth": 1.0
+    },
+    "service_post": {
+      "yes": 1.0
+    }
+  },
   "follower_history": [
     {
       "date": "2026-11-16",
       "followers": 100,
       "media": 15
+    },
+    {
+      "date": "2026-11-23",
+      "followers": 103,
+      "media": 33
     }
   ],
-  "tips": [],
+  "tips": [
+    "いちばん反応が良い形式は「リール」です。今後この形式を優先します。",
+    "切り口は「story」型（question=問いかけ / number=数字 / warning=注意喚起 / howto=手順 / myth=誤解）が効いています。",
+    "フォロワーは 2026-11-16 から +3 人です。"
+  ],
   "retired_count": 0
 }

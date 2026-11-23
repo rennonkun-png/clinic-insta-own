@@ -8,6 +8,243 @@
     "views": 5,
     "total_interactions": 0,
     "timestamp": "2026-11-13T11:22:49+0000",
-    "fetched_at": "2026-11-16T01:29:12.711646+00:00"
+    "fetched_at": "2026-11-23T02:04:58.964423+00:00"
+  },
+  "18140573878725112": {
+    "reach": 37,
+    "saved": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "views": 39,
+    "total_interactions": 0,
+    "timestamp": "2026-11-14T15:30:13+0000",
+    "fetched_at": "2026-11-23T02:04:58.964423+00:00"
+  },
+  "18015726938967277": {
+    "reach": 2,
+    "saved": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "views": 3,
+    "timestamp": "2026-11-14T21:08:20+0000",
+    "fetched_at": "2026-11-23T02:04:58.964423+00:00"
+  },
+  "18642555046028307": {
+    "reach": 12,
+    "saved": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "views": 12,
+    "total_interactions": 0,
+    "timestamp": "2026-11-14T21:13:08+0000",
+    "fetched_at": "2026-11-23T02:04:58.964423+00:00"
+  },
+  "18130769911639893": {
+    "reach": 2,
+    "saved": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "views": 6,
+    "timestamp": "2026-11-14T21:19:44+0000",
+    "fetched_at": "2026-11-23T02:04:58.964423+00:00"
+  },
+  "18145889692717165": {
+    "reach": 3,
+    "saved": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "views": 6,
+    "timestamp": "2026-11-14T21:22:06+0000",
+    "fetched_at": "2026-11-23T02:04:58.964423+00:00"
+  },
+  "17995690341028001": {
+    "reach": 2,
+    "saved": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "views": 5,
+    "timestamp": "2026-11-14T21:36:59+0000",
+    "fetched_at": "2026-11-23T02:04:58.964423+00:00"
+  },
+  "18132918007797294": {
+    "reach": 2,
+    "saved": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "views": 8,
+    "timestamp": "2026-11-14T21:43:05+0000",
+    "fetched_at": "2026-11-23T02:04:58.964423+00:00"
+  },
+  "18214257376364309": {
+    "reach": 20,
+    "saved": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "views": 23,
+    "total_interactions": 0,
+    "timestamp": "2026-11-14T21:50:01+0000",
+    "fetched_at": "2026-11-23T02:04:58.964423+00:00"
+  },
+  "18097278530323841": {
+    "reach": 2,
+    "saved": 0,
+    "likes": 1,
+    "comments": 0,
+    "shares": 0,
+    "views": 3,
+    "total_interactions": 1,
+    "timestamp": "2026-11-16T10:23:00+0000",
+    "fetched_at": "2026-11-23T02:04:58.964423+00:00"
+  },
+  "18125063467957114": {
+    "reach": 63,
+    "saved": 0,
+    "likes": 1,
+    "comments": 0,
+    "shares": 0,
+    "views": 70,
+    "total_interactions": 1,
+    "timestamp": "2026-11-17T03:03:56+0000",
+    "fetched_at": "2026-11-23T02:04:58.964423+00:00"
+  },
+  "18156756244526614": {
+    "reach": 115,
+    "saved": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "views": 125,
+    "total_interactions": 0,
+    "timestamp": "2026-11-17T10:03:51+0000",
+    "fetched_at": "2026-11-23T02:04:58.964423+00:00"
+  },
+  "18100891106410437": {
+    "reach": 8,
+    "saved": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "views": 9,
+    "total_interactions": 0,
+    "timestamp": "2026-11-17T23:05:41+0000",
+    "fetched_at": "2026-11-23T02:04:58.964423+00:00"
+  },
+  "17997239025023772": {
+    "reach": 8,
+    "saved": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "views": 8,
+    "total_interactions": 0,
+    "timestamp": "2026-11-18T04:04:37+0000",
+    "fetched_at": "2026-11-23T02:04:58.964423+00:00"
+  },
+  "18164644285499318": {
+    "reach": 45,
+    "saved": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "views": 50,
+    "total_interactions": 0,
+    "timestamp": "2026-11-18T11:04:44+0000",
+    "fetched_at": "2026-11-23T02:04:58.964423+00:00"
+  },
+  "18122326258974239": {
+    "reach": 5,
+    "saved": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "views": 6,
+    "total_interactions": 0,
+    "timestamp": "2026-11-19T00:04:19+0000",
+    "fetched_at": "2026-11-23T02:04:58.964423+00:00"
+  },
+  "17931784983180918": {
+    "reach": 19,
+    "saved": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "views": 25,
+    "total_interactions": 0,
+    "timestamp": "2026-11-19T05:04:30+0000",
+    "fetched_at": "2026-11-23T02:04:58.964423+00:00"
+  },
+  "17920313484521733": {
+    "reach": 15,
+    "saved": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "views": 16,
+    "total_interactions": 0,
+    "timestamp": "2026-11-19T22:03:50+0000",
+    "fetched_at": "2026-11-23T02:04:58.964423+00:00"
+  },
+  "17957822727314955": {
+    "reach": 12,
+    "saved": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "views": 15,
+    "total_interactions": 0,
+    "timestamp": "2026-11-20T03:05:24+0000",
+    "fetched_at": "2026-11-23T02:04:58.964423+00:00"
+  },
+  "17905783329607929": {
+    "reach": 127,
+    "saved": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "views": 132,
+    "total_interactions": 0,
+    "timestamp": "2026-11-20T10:05:07+0000",
+    "fetched_at": "2026-11-23T02:04:58.964423+00:00"
+  },
+  "18126617629919224": {
+    "reach": 105,
+    "saved": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "views": 116,
+    "total_interactions": 0,
+    "timestamp": "2026-11-20T23:05:03+0000",
+    "fetched_at": "2026-11-23T02:04:58.964423+00:00"
+  },
+  "18397926520161430": {
+    "reach": 118,
+    "saved": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "views": 128,
+    "total_interactions": 0,
+    "timestamp": "2026-11-21T04:05:03+0000",
+    "fetched_at": "2026-11-23T02:04:58.964423+00:00"
+  },
+  "18109884766976023": {
+    "reach": 109,
+    "saved": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "views": 116,
+    "total_interactions": 0,
+    "timestamp": "2026-11-21T11:04:28+0000",
+    "fetched_at": "2026-11-23T02:04:58.964423+00:00"
   }
 }
