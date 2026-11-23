@@ -651,6 +651,26 @@
       "followers_at_post": 103,
       "posted_at": "2026-11-23T12:03+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-23",
+      "id": "generated:x1122-3",
+      "category": "webmarketing",
+      "title": "HPの一番下の「© 2019」、更新が止まって見えませんか",
+      "format": "reel",
+      "hook": "question",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18508810609111246",
+      "permalink": "https://www.instagram.com/reel/DgFH0-5tvWL/",
+      "followers_at_post": 103,
+      "posted_at": "2026-11-23T19:04+09:00",
+      "slot": true
     }
   ]
 }
