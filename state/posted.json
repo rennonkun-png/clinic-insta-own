@@ -691,6 +691,26 @@
       "followers_at_post": 103,
       "posted_at": "2026-11-24T08:04+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-24",
+      "id": "generated:x1122-5",
+      "category": "webmarketing",
+      "title": "スタッフの私用SNSに院内の写真を載せる前の、院内ルール",
+      "format": "reel",
+      "hook": "warning",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18222816739350678",
+      "permalink": "https://www.instagram.com/reel/DgHDXbNKRqm/",
+      "followers_at_post": 103,
+      "posted_at": "2026-11-24T13:04+09:00",
+      "slot": true
     }
   ]
 }
