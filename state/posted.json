@@ -711,6 +711,26 @@
       "followers_at_post": 103,
       "posted_at": "2026-11-24T13:04+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-24",
+      "id": "generated:x1122-4",
+      "category": "webmarketing",
+      "title": "休診日のカレンダーが画像だけだと、スマホで読みにくい",
+      "format": "reel",
+      "hook": "warning",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18130611025869867",
+      "permalink": "https://www.instagram.com/reel/DgHzfxlAcHn/",
+      "followers_at_post": 103,
+      "posted_at": "2026-11-24T20:04+09:00",
+      "slot": true
     }
   ]
 }
