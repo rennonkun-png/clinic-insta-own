@@ -119,6 +119,15 @@ def main() -> int:
     if fmt == "carousel":
         paths = render_carousel(cfg, post, OUTPUT_DIR, stem, illust=illust)
         files = [p.name for p in paths]
+    elif fmt == "reel" and post.get("video_file"):
+        # 作り済みの動画（AIの映像など）は描き直さず、そのまま出す。表紙も用意した画像を使う
+        import shutil
+        video = OUTPUT_DIR / f"{stem}.mp4"
+        cover = OUTPUT_DIR / f"{stem}_cover.jpg"
+        OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(ROOT / post["video_file"], video)
+        shutil.copyfile(ROOT / post["cover_file"], cover)
+        files = [video.name, cover.name]
     elif fmt == "reel":
         if is_note(cfg) and (post.get("reel") or post.get("points")):  # 型（スマホ操作・大きな文字・写真）を投稿ごとに切り替える
             import reel_styles

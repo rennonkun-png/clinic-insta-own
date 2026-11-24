@@ -4198,6 +4198,32 @@
     ]
   },
   {
+    "id": "ai1124-1",
+    "category": "webmarketing",
+    "format": "reel",
+    "exp": true,
+    "service": "web_consulting",
+    "test": "AIの映像（Google Flow）にナレーションと音楽を重ねた物語の型。1本目",
+    "title": "診療中に出られなかった電話、その患者さんはどう動く？",
+    "hook": "question",
+    "video_file": "assets/ready/ai1124-1.mp4",
+    "cover_file": "assets/ready/ai1124-1_cover.jpg",
+    "body": [
+      "診療中は受付の手がふさがり、電話に出られない時間があります。かけた側は、つながらなければ数分のうちに次の医院を探しはじめることがあります。",
+      "かけ直してもつながらないと、地図で近くの医院を探す",
+      "ネットで予約できる医院が見つかれば、その場で予約まで進む",
+      "翌朝に折り返しても、もう別の医院に予約済みのことがある"
+    ],
+    "caption_extra": "※ この動画の映像はAIで作成しています。場面は説明のための例です。",
+    "cta": "電話に出られない時間の受け皿（ネット予約や折り返しの案内）があるか、確かめてみてください",
+    "hashtags": [
+      "#電話対応",
+      "#ネット予約",
+      "#医院運営"
+    ],
+    "design": "note"
+  },
+  {
     "id": "x1122-7",
     "category": "webmarketing",
     "format": "reel",
