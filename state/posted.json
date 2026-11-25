@@ -771,6 +771,26 @@
       "followers_at_post": 103,
       "posted_at": "2026-11-25T14:04+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-25",
+      "id": "generated:x1122-6",
+      "category": "webmarketing",
+      "title": "Googleマップの医院名に「駅前」を足すと、停止のおそれ",
+      "format": "reel",
+      "hook": "warning",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18121719812003903",
+      "permalink": "https://www.instagram.com/reel/DgKfLaWuzjY/",
+      "followers_at_post": 103,
+      "posted_at": "2026-11-25T21:05+09:00",
+      "slot": true
     }
   ]
 }
