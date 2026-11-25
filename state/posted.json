@@ -751,6 +751,26 @@
       "followers_at_post": 103,
       "posted_at": "2026-11-25T09:03+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-25",
+      "id": "generated:x1122-7",
+      "category": "webmarketing",
+      "title": "筆談できるか、車いすで入れるか。HPに一文で書く",
+      "format": "reel",
+      "hook": "question",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18155869819553987",
+      "permalink": "https://www.instagram.com/reel/DgJvFQjhVR-/",
+      "followers_at_post": 103,
+      "posted_at": "2026-11-25T14:04+09:00",
+      "slot": true
     }
   ]
 }
