@@ -791,6 +791,26 @@
       "followers_at_post": 103,
       "posted_at": "2026-11-25T21:05+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-26",
+      "id": "generated:ai1126-1",
+      "category": "webmarketing",
+      "title": "夜10時に予約したい患者さん、その後どう動く？",
+      "format": "reel",
+      "hook": "question",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "17969062802982501",
+      "permalink": "https://www.instagram.com/reel/DgLjtdPtOni/",
+      "followers_at_post": 103,
+      "posted_at": "2026-11-26T07:03+09:00",
+      "slot": true
     }
   ]
 }
