@@ -811,6 +811,26 @@
       "followers_at_post": 103,
       "posted_at": "2026-11-26T07:03+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-26",
+      "id": "generated:x1126-1",
+      "category": "webmarketing",
+      "title": "順番が分からない待合で、黙って帰る方がいます",
+      "format": "reel",
+      "hook": "story",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "17969129672982504",
+      "permalink": "https://www.instagram.com/reel/DgMGGFpo9dD/",
+      "followers_at_post": 103,
+      "posted_at": "2026-11-26T12:04+09:00",
+      "slot": true
     }
   ]
 }
