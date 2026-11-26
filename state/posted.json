@@ -831,6 +831,26 @@
       "followers_at_post": 103,
       "posted_at": "2026-11-26T12:04+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-26",
+      "id": "generated:x1126-2",
+      "category": "webmarketing",
+      "title": "低い評価に返事がない口コミを見た人は、次にどう動くか",
+      "format": "reel",
+      "hook": "question",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "17986978511898601",
+      "permalink": "https://www.instagram.com/reel/DgM2JXVBXDS/",
+      "followers_at_post": 103,
+      "posted_at": "2026-11-26T19:04+09:00",
+      "slot": true
     }
   ]
 }
