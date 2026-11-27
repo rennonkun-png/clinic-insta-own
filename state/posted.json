@@ -891,6 +891,26 @@
       "followers_at_post": 103,
       "posted_at": "2026-11-27T13:04+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-27",
+      "id": "generated:x1126-5",
+      "category": "webmarketing",
+      "title": "駐車場の入口が分からず、通り過ぎた車はどこへ行くか",
+      "format": "reel",
+      "hook": "question",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "17892015729527142",
+      "permalink": "https://www.instagram.com/reel/DgPh3NcSQIU/",
+      "followers_at_post": 103,
+      "posted_at": "2026-11-27T20:04+09:00",
+      "slot": true
     }
   ]
 }
