@@ -871,6 +871,26 @@
       "followers_at_post": 103,
       "posted_at": "2026-11-27T08:05+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-27",
+      "id": "generated:x1126-4",
+      "category": "webmarketing",
+      "title": "初診の費用と時間が分からず、予約の手前でやめる方",
+      "format": "reel",
+      "hook": "warning",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18080853710743720",
+      "permalink": "https://www.instagram.com/reel/DgOxzQehkdN/",
+      "followers_at_post": 103,
+      "posted_at": "2026-11-27T13:04+09:00",
+      "slot": true
     }
   ]
 }
