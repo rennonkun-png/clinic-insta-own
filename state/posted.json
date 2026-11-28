@@ -911,6 +911,26 @@
       "followers_at_post": 103,
       "posted_at": "2026-11-27T20:04+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-28",
+      "id": "generated:x1126-6",
+      "category": "webmarketing",
+      "title": "予約の入力欄が多くて、途中で閉じる方がいます",
+      "format": "reel",
+      "hook": "warning",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18112184279280425",
+      "permalink": "https://www.instagram.com/reel/DgQ7ESauDPp/",
+      "followers_at_post": 103,
+      "posted_at": "2026-11-28T09:03+09:00",
+      "slot": true
     }
   ]
 }
