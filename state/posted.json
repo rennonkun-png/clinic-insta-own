@@ -931,6 +931,26 @@
       "followers_at_post": 103,
       "posted_at": "2026-11-28T09:03+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-28",
+      "id": "generated:x1126-7",
+      "category": "webmarketing",
+      "title": "夜に届いた問い合わせ、翌朝の返事までに起きること",
+      "format": "reel",
+      "hook": "story",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "17875095048647570",
+      "permalink": "https://www.instagram.com/reel/DgRdhwQqBL0/",
+      "followers_at_post": 103,
+      "posted_at": "2026-11-28T14:05+09:00",
+      "slot": true
     }
   ]
 }
