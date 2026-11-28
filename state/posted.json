@@ -951,6 +951,26 @@
       "followers_at_post": 103,
       "posted_at": "2026-11-28T14:05+09:00",
       "slot": true
+    },
+    {
+      "date": "2026-11-28",
+      "id": "generated:x1126-8",
+      "category": "webmarketing",
+      "title": "予約の変え方が分からず、連絡なしで来なくなる方",
+      "format": "reel",
+      "hook": "warning",
+      "service": "web_consulting",
+      "goals": [
+        "reach",
+        "reels",
+        "followers",
+        "acquisition"
+      ],
+      "media_id": "18178747303454345",
+      "permalink": "https://www.instagram.com/reel/DgSNbnIB4NL/",
+      "followers_at_post": 103,
+      "posted_at": "2026-11-28T21:03+09:00",
+      "slot": true
     }
   ]
 }
